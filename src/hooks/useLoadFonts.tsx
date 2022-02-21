@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import * as Font from "expo-font";
 
 export const useLoadFonts = () => {
-  const [fontsLoading, setFontsLoading] = useState(false);
+  const [fontsLoading, setFontsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {

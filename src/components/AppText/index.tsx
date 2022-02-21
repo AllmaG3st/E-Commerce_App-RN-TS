@@ -1,12 +1,14 @@
-import { View, Text } from "react-native";
+import { Text, TextStyle } from "react-native";
 import React, { ReactNode } from "react";
+import globalStyles from "../../config/globalStyles";
 
 type Props = {
   children: ReactNode;
+  style?: TextStyle;
 };
 
-const AppText = ({ children }: Props) => {
-  return <Text>{children}</Text>;
+const AppText = ({ children, style }: Props) => {
+  return <Text style={globalStyles.text}>{children}</Text>;
 };
 
 export default AppText;
