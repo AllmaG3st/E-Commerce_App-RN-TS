@@ -8,7 +8,7 @@ type Props = {
 };
 
 const AppText = ({ children, style }: Props) => {
-  return <Text style={globalStyles.text}>{children}</Text>;
+  return <Text style={[globalStyles.text, style]}>{children}</Text>;
 };
 
 export default AppText;
