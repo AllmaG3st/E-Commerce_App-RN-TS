@@ -1,10 +1,12 @@
 import { View, Text, Image, TextInput } from "react-native";
 import React from "react";
-import styles from "./styles";
+import { useTranslation } from "react-i18next";
 import { Formik } from "formik";
+
 import AppButton from "../../components/AppButton";
 import Screen from "../../components/Screen";
-import { useTranslation } from "react-i18next";
+
+import styles from "./styles";
 
 type Props = {};
 

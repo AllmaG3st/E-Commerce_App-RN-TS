@@ -1,5 +1,6 @@
 import { Text, TextStyle } from "react-native";
 import React, { ReactNode } from "react";
+
 import globalStyles from "../../config/globalStyles";
 
 type Props = {
