@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { Platform, View } from "react-native";
 import React from "react";
 
 import { COLORS } from "../../config/colors";
