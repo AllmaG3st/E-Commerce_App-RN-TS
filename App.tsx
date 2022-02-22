@@ -23,14 +23,5 @@ export default function App() {
       />
     );
 
-  return (
-    // <ListingDetailScreen />
-    <View style={{ backgroundColor: "#f8f4f4", padding: 20, paddingTop: 100 }}>
-      <Card
-        title="Red Jacket"
-        subTitle="$100"
-        image={require("./src/assets/joystick.jpg")}
-      />
-    </View>
-  );
+  return <ListingDetailScreen />;
 }
