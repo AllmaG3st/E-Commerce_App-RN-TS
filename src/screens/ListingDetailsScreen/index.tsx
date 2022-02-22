@@ -5,10 +5,13 @@ import AppText from "../../components/AppText";
 import ListItem from "../../components/ListItem";
 
 import styles from "./styles";
+import { useTranslation } from "react-i18next";
 
 type Props = {};
 
 const ListingDetailScreen = ({}: Props) => {
+  const { t } = useTranslation();
+
   return (
     <View>
       <Image
@@ -21,7 +24,7 @@ const ListingDetailScreen = ({}: Props) => {
         <View style={styles.userContainer}>
           <ListItem
             title="Margot Robbie"
-            subTitle="5 Listings"
+            subTitle={`5 ${t("Listings")}`}
             image={require("../../assets/margot.jpg")}
           />
         </View>
