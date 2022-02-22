@@ -1,4 +1,6 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+
+const { width } = Dimensions.get("window");
 
 export default StyleSheet.create({
   background: {
@@ -16,8 +18,8 @@ export default StyleSheet.create({
     alignItems: "center",
   },
   logo: {
-    width: 100,
-    height: 100,
+    width: width / 4,
+    height: width / 4,
     marginBottom: 10,
   },
   text: {

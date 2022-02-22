@@ -1,14 +1,18 @@
 import { View, ImageBackground, Image } from "react-native";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
-import styles from "./styles";
 import AppText from "../../components/AppText";
 import AppButton from "../../components/AppButton";
 import { COLORS } from "../../config/colors";
 
+import styles from "./styles";
+
 type Props = {};
 
 const WelcomeScreen = (props: Props) => {
+  const { t } = useTranslation();
+
   return (
     <ImageBackground
       style={styles.background}
@@ -24,13 +28,13 @@ const WelcomeScreen = (props: Props) => {
       </View>
       <View style={styles.buttonsContainer}>
         <AppButton
-          title="Login"
+          title={t("Login")}
           onPress={() => {
             console.log("login");
           }}
         />
         <AppButton
-          title="Register"
+          title={t("Register")}
           onPress={() => {
             console.log("register");
           }}

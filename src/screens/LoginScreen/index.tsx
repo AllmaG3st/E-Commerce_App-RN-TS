@@ -4,10 +4,13 @@ import styles from "./styles";
 import { Formik } from "formik";
 import AppButton from "../../components/AppButton";
 import Screen from "../../components/Screen";
+import { useTranslation } from "react-i18next";
 
 type Props = {};
 
 const LoginScreen = (props: Props) => {
+  const { t } = useTranslation();
+
   return (
     <Screen style={styles.container}>
       <Image
@@ -25,7 +28,7 @@ const LoginScreen = (props: Props) => {
               onBlur={handleBlur("email")}
               value={values.email}
             />
-            <AppButton title="Login" onPress={handleSubmit} />
+            <AppButton title={t("Login")} onPress={handleSubmit} />
           </View>
         )}
       </Formik>
