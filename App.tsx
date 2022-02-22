@@ -9,6 +9,7 @@ import LoginScreen from "./src/screens/LoginScreen";
 import "./i18n.config";
 import { View } from "react-native";
 import Card from "./src/components/Card";
+import ListingDetailScreen from "./src/screens/ListingDetailsScreen";
 
 export default function App() {
   const fontsLoading = useLoadFonts();
@@ -23,12 +24,12 @@ export default function App() {
     );
 
   return (
+    // <ListingDetailScreen />
     <View style={{ backgroundColor: "#f8f4f4", padding: 20, paddingTop: 100 }}>
       <Card
         title="Red Jacket"
         subTitle="$100"
-        s
-        image={require("./src/assets/jacket.jpg")}
+        image={require("./src/assets/joystick.jpg")}
       />
     </View>
   );
