@@ -1,5 +1,6 @@
 import { View, ImageSourcePropType, Image } from "react-native";
-import React from "react";
+import React, { memo } from "react";
+import { Swipeable } from "react-native-gesture-handler";
 
 import AppText from "../AppText";
 import AppTouchable from "../AppTouchable";
@@ -10,20 +11,31 @@ type Props = {
   title: string;
   subTitle: string;
   image: ImageSourcePropType;
+  //Change here
+  onPress?: any;
+  renderRightActions?: any;
 };
 
-const ListItem = ({ title, subTitle, image }: Props) => {
+const ListItem = ({
+  title,
+  subTitle,
+  image,
+  onPress,
+  renderRightActions,
+}: Props) => {
   return (
-    <AppTouchable onPress={() => console.log("hi")}>
-      <View style={styles.container}>
-        <Image style={styles.image} source={image} />
-        <View>
-          <AppText>{title}</AppText>
-          <AppText style={styles.subTitle}>{subTitle}</AppText>
+    <Swipeable renderRightActions={renderRightActions}>
+      <AppTouchable onPress={onPress}>
+        <View style={styles.container}>
+          <Image style={styles.image} source={image} />
+          <View>
+            <AppText>{title}</AppText>
+            <AppText style={styles.subTitle}>{subTitle}</AppText>
+          </View>
         </View>
-      </View>
-    </AppTouchable>
+      </AppTouchable>
+    </Swipeable>
   );
 };
 
-export default ListItem;
+export default memo(ListItem);

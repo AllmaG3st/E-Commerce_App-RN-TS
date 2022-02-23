@@ -1,12 +1,13 @@
 import { FlatList } from "react-native";
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 
+import { Message } from "../../types/data";
 import ListItem from "../../components/ListItem";
 import Screen from "../../components/Screen";
-import { Message } from "../../types/data";
 import ListItemSeparator from "../../components/ListItemSeparator";
+import ListItemDeleteAction from "../../components/ListItemDeleteAction";
 
-const messages: Message[] = [
+const initialMessages: Message[] = [
   {
     id: 1,
     title: "T1",
@@ -24,12 +25,24 @@ const messages: Message[] = [
 type Props = {};
 
 const MessagesScreen = () => {
+  const [messages, setMessages] = useState(initialMessages);
+
+  const handleDelete = (message: Message) => {
+    setMessages((prevState) =>
+      prevState.filter((m: Message) => m.id !== message.id)
+    );
+  };
+
   const renderMessageItem = useCallback((item: Message) => {
     return (
       <ListItem
         title={item.title}
         subTitle={item.description}
         image={item.image}
+        onPress={() => console.log("hi")}
+        renderRightActions={() => (
+          <ListItemDeleteAction onPress={() => handleDelete(item)} />
+        )}
       />
     );
   }, []);
