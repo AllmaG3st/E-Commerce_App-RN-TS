@@ -9,6 +9,8 @@ import Card from "./src/components/Card";
 import ListingDetailScreen from "./src/screens/ListingDetailsScreen";
 import ViewImageScreen from "./src/screens/ViewImageScreen";
 import MessagesScreen from "./src/screens/MessagesScreen";
+import Screen from "./src/components/Screen";
+import Icon from "./src/components/Icon";
 
 export default function App() {
   const fontsLoading = useLoadFonts();
@@ -22,5 +24,9 @@ export default function App() {
       />
     );
 
-  return <MessagesScreen />;
+  return (
+    <Screen>
+      <Icon name="email" size={50} />
+    </Screen>
+  );
 }
