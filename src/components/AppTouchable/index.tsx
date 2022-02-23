@@ -2,12 +2,14 @@ import {
   TouchableOpacity,
   Platform,
   TouchableNativeFeedback,
+  TouchableOpacityProps,
 } from "react-native";
 import React, { ReactNode } from "react";
 
 type Props = {
   children: ReactNode;
   onPress: () => void;
+  props?: TouchableOpacityProps | TouchableNativeFeedback;
 };
 
 const AppTouchable = ({ children, onPress, ...props }: Props) => {

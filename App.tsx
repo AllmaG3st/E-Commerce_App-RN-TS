@@ -8,6 +8,7 @@ import { View } from "react-native";
 import Card from "./src/components/Card";
 import ListingDetailScreen from "./src/screens/ListingDetailsScreen";
 import ViewImageScreen from "./src/screens/ViewImageScreen";
+import MessagesScreen from "./src/screens/MessagesScreen";
 
 export default function App() {
   const fontsLoading = useLoadFonts();
@@ -21,5 +22,5 @@ export default function App() {
       />
     );
 
-  return <ViewImageScreen />;
+  return <MessagesScreen />;
 }

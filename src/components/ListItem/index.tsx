@@ -1,8 +1,10 @@
-import { View, Text, ImageSourcePropType, Image } from "react-native";
+import { View, ImageSourcePropType, Image } from "react-native";
 import React from "react";
 
-import styles from "./styles";
 import AppText from "../AppText";
+import AppTouchable from "../AppTouchable";
+
+import styles from "./styles";
 
 type Props = {
   title: string;
@@ -12,13 +14,15 @@ type Props = {
 
 const ListItem = ({ title, subTitle, image }: Props) => {
   return (
-    <View style={styles.container}>
-      <Image style={styles.image} source={image} />
-      <View>
-        <AppText>{title}</AppText>
-        <AppText style={styles.subTitle}>{subTitle}</AppText>
+    <AppTouchable onPress={() => console.log("hi")}>
+      <View style={styles.container}>
+        <Image style={styles.image} source={image} />
+        <View>
+          <AppText>{title}</AppText>
+          <AppText style={styles.subTitle}>{subTitle}</AppText>
+        </View>
       </View>
-    </View>
+    </AppTouchable>
   );
 };
 

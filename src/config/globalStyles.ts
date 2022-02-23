@@ -7,4 +7,9 @@ export default StyleSheet.create({
     fontFamily: "open-sans-bold",
     fontSize: 18,
   },
+  separator: {
+    width: "100%",
+    height: 1,
+    backgroundColor: COLORS.light,
+  },
 });
