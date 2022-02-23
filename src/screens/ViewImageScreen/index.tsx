@@ -6,7 +6,7 @@ import styles from "./styles";
 
 type Props = {};
 
-const index = (props: Props) => {
+const ViewImageScreen = (props: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.closeIcon}>
@@ -28,4 +28,4 @@ const index = (props: Props) => {
   );
 };
 
-export default index;
+export default ViewImageScreen;
