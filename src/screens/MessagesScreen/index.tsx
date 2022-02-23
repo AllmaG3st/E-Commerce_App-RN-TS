@@ -25,7 +25,8 @@ const initialMessages: Message[] = [
 type Props = {};
 
 const MessagesScreen = () => {
-  const [messages, setMessages] = useState(initialMessages);
+  const [messages, setMessages] = useState<Message[]>(initialMessages);
+  const [refreshing, setRefreshing] = useState(false);
 
   const handleDelete = (message: Message) => {
     setMessages((prevState) =>
@@ -54,6 +55,8 @@ const MessagesScreen = () => {
         keyExtractor={(msg) => msg.id.toString()}
         renderItem={({ item }) => renderMessageItem(item)}
         ItemSeparatorComponent={ListItemSeparator}
+        refreshing={refreshing}
+        onRefresh={() => console.log("refreshed")}
       />
     </Screen>
   );

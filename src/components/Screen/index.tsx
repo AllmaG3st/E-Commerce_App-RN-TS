@@ -12,7 +12,7 @@ type Props = {
 const Screen = ({ children, style }: Props) => {
   return (
     <SafeAreaView style={[styles.screen, style]}>
-      <View style={style}>{children}</View>
+      <View style={[styles.container, style]}>{children}</View>
     </SafeAreaView>
   );
 };
