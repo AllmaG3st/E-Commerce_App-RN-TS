@@ -3,6 +3,7 @@ import React from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import { COLORS } from "../../config/colors";
+import styles from "./styles";
 
 type Props = {
   name: React.ComponentProps<typeof MaterialCommunityIcons>["name"];
@@ -18,16 +19,7 @@ const Icon = ({
   iconColor = COLORS.white,
 }: Props) => {
   return (
-    <View
-      style={{
-        width: size,
-        height: size,
-        borderRadius: size / 2,
-        backgroundColor: bgColor,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <View style={styles(size, bgColor).icon}>
       <MaterialCommunityIcons name={name} size={size * 0.5} color={iconColor} />
     </View>
   );
