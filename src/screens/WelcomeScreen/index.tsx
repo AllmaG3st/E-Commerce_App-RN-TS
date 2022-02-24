@@ -8,9 +8,7 @@ import { COLORS } from "../../config/colors";
 
 import styles from "./styles";
 
-type Props = {};
-
-const WelcomeScreen = (props: Props) => {
+const WelcomeScreen = () => {
   const { t } = useTranslation();
 
   return (

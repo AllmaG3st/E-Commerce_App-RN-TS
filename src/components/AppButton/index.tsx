@@ -2,6 +2,7 @@ import { View } from "react-native";
 import React from "react";
 
 import { COLORS } from "../../config/colors";
+
 import AppTouchable from "../AppTouchable";
 import AppText from "../AppText";
 

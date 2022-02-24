@@ -23,8 +23,6 @@ const initialMessages: Message[] = [
   },
 ];
 
-type Props = {};
-
 const MessagesScreen = () => {
   const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [refreshing, setRefreshing] = useState(false);

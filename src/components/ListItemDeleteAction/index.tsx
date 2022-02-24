@@ -4,8 +4,9 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import { COLORS } from "../../config/colors";
 
-import styles from "./styles";
 import AppTouchable from "../AppTouchable";
+
+import styles from "./styles";
 
 type Props = {
   onPress: () => void;

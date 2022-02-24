@@ -1,7 +1,6 @@
 import { View, ImageSourcePropType, Image } from "react-native";
 import React, { memo, ReactNode } from "react";
 import { Swipeable } from "react-native-gesture-handler";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import AppText from "../AppText";
 import AppTouchable from "../AppTouchable";

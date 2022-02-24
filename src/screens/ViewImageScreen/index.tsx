@@ -4,9 +4,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import styles from "./styles";
 
-type Props = {};
-
-const ViewImageScreen = (props: Props) => {
+const ViewImageScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.closeIcon}>

@@ -1,4 +1,4 @@
-import { View, Text, Image, TextInput } from "react-native";
+import { View, Image, TextInput } from "react-native";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Formik } from "formik";
@@ -8,9 +8,7 @@ import Screen from "../../components/Screen";
 
 import styles from "./styles";
 
-type Props = {};
-
-const LoginScreen = (props: Props) => {
+const LoginScreen = () => {
   const { t } = useTranslation();
 
   return (
