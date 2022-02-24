@@ -11,6 +11,9 @@ import ViewImageScreen from "./src/screens/ViewImageScreen";
 import MessagesScreen from "./src/screens/MessagesScreen";
 import Screen from "./src/components/Screen";
 import Icon from "./src/components/Icon";
+import AccountScreen from "./src/screens/AccountScreen";
+import ListItem from "./src/components/ListItem";
+import { COLORS } from "./src/config/colors";
 
 export default function App() {
   const fontsLoading = useLoadFonts();
@@ -26,7 +29,15 @@ export default function App() {
 
   return (
     <Screen>
-      <Icon name="email" size={50} />
+      <ListItem
+        title="Margot Robbie"
+        subTitle="harleyqueen@gmail.com"
+        image={require("./src/assets/margot.jpg")}
+      />
+      <ListItem
+        title="My Listings"
+        IconComponent={<Icon name="email" bgColor={COLORS.primary} size={50} />}
+      />
     </Screen>
   );
 }

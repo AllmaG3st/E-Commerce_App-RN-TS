@@ -4,8 +4,8 @@ import { COLORS } from "./colors";
 export default StyleSheet.create({
   text: {
     color: COLORS.dark,
-    fontFamily: "open-sans-bold",
-    fontSize: 18,
+    fontFamily: "open-sans",
+    fontSize: 17,
   },
   separator: {
     width: "100%",

@@ -1,6 +1,7 @@
 import { View, ImageSourcePropType, Image } from "react-native";
-import React, { memo } from "react";
+import React, { memo, ReactNode } from "react";
 import { Swipeable } from "react-native-gesture-handler";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import AppText from "../AppText";
 import AppTouchable from "../AppTouchable";
@@ -9,28 +10,31 @@ import styles from "./styles";
 
 type Props = {
   title: string;
-  subTitle: string;
-  image: ImageSourcePropType;
-  //Change here
-  onPress?: any;
+  subTitle?: string;
+  IconComponent?: ReactNode;
+  iconSize?: number;
+  image?: ImageSourcePropType;
+  onPress?: () => void;
   renderRightActions?: any;
 };
 
 const ListItem = ({
   title,
   subTitle,
+  IconComponent,
   image,
-  onPress,
+  onPress = () => {},
   renderRightActions,
 }: Props) => {
   return (
     <Swipeable renderRightActions={renderRightActions}>
       <AppTouchable onPress={onPress}>
         <View style={styles.container}>
-          <Image style={styles.image} source={image} />
-          <View>
+          {image && <Image style={styles.image} source={image} />}
+          {IconComponent}
+          <View style={styles.detailsContainer}>
             <AppText>{title}</AppText>
-            <AppText style={styles.subTitle}>{subTitle}</AppText>
+            {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
           </View>
         </View>
       </AppTouchable>

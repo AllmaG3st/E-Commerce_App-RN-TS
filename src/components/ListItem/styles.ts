@@ -16,4 +16,8 @@ export default StyleSheet.create({
     color: COLORS.medium,
     fontSize: 15,
   },
+  detailsContainer: {
+    marginLeft: 10,
+    justifyContent: "center",
+  },
 });
