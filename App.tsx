@@ -15,6 +15,7 @@ import AccountScreen from "./src/screens/AccountScreen";
 import ListItem from "./src/components/ListItem";
 import { COLORS } from "./src/config/colors";
 import ListingsScreen from "./src/screens/ListingsScreen";
+import AppTextInput from "./src/components/AppTextInput";
 
 export default function App() {
   const fontsLoading = useLoadFonts();
@@ -28,5 +29,9 @@ export default function App() {
       />
     );
 
-  return <ListingsScreen />;
+  return (
+    <Screen>
+      <AppTextInput iconName="email" placeHolder="Email" secureTextEntry />
+    </Screen>
+  );
 }
