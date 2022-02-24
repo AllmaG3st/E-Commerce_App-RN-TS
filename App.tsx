@@ -27,17 +27,5 @@ export default function App() {
       />
     );
 
-  return (
-    <Screen>
-      <ListItem
-        title="Margot Robbie"
-        subTitle="harleyqueen@gmail.com"
-        image={require("./src/assets/margot.jpg")}
-      />
-      <ListItem
-        title="My Listings"
-        IconComponent={<Icon name="email" bgColor={COLORS.primary} size={50} />}
-      />
-    </Screen>
-  );
+  return <AccountScreen />;
 }

@@ -2,6 +2,7 @@ import { FlatList } from "react-native";
 import React, { useCallback, useState } from "react";
 
 import { Message } from "../../types/data";
+
 import ListItem from "../../components/ListItem";
 import Screen from "../../components/Screen";
 import ListItemSeparator from "../../components/ListItemSeparator";
@@ -34,7 +35,8 @@ const MessagesScreen = () => {
     );
   };
 
-  const renderMessageItem = useCallback((item: Message) => {
+  const renderMessageItem = useCallback(({ item }) => {
+    console.log("hi");
     return (
       <ListItem
         title={item.title}
@@ -53,7 +55,7 @@ const MessagesScreen = () => {
       <FlatList
         data={messages}
         keyExtractor={(msg) => msg.id.toString()}
-        renderItem={({ item }) => renderMessageItem(item)}
+        renderItem={renderMessageItem}
         ItemSeparatorComponent={ListItemSeparator}
         refreshing={refreshing}
         onRefresh={() => console.log("refreshed")}

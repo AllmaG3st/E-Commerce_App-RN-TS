@@ -1,5 +1,8 @@
 {
   "Login": "Login",
   "Register": "Register",
-  "Listings": "Listings"
+  "Listings": "Listings",
+  "MyListings": "My Listings",
+  "MyAccount": "My Account",
+  "LogOut": "Log Out"
 }
