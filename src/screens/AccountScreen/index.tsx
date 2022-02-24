@@ -1,5 +1,5 @@
 import { View, Text, FlatList } from "react-native";
-import React from "react";
+import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
 import Screen from "../../components/Screen";
@@ -32,7 +32,7 @@ const menuItems: MenuItem[] = [
 const AccountScreen = () => {
   const { t } = useTranslation();
 
-  const renderListItem = ({ item }: any) => {
+  const renderListItem = useCallback(({ item }) => {
     return (
       <ListItem
         title={item.title}
@@ -45,7 +45,7 @@ const AccountScreen = () => {
         }
       />
     );
-  };
+  }, []);
 
   return (
     <Screen style={styles.screen}>

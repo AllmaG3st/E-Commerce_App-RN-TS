@@ -14,6 +14,7 @@ import Icon from "./src/components/Icon";
 import AccountScreen from "./src/screens/AccountScreen";
 import ListItem from "./src/components/ListItem";
 import { COLORS } from "./src/config/colors";
+import ListingsScreen from "./src/screens/ListingsScreen";
 
 export default function App() {
   const fontsLoading = useLoadFonts();
@@ -27,5 +28,5 @@ export default function App() {
       />
     );
 
-  return <AccountScreen />;
+  return <ListingsScreen />;
 }

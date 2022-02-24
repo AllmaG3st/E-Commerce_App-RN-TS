@@ -7,9 +7,7 @@ import ListItem from "../../components/ListItem";
 
 import styles from "./styles";
 
-type Props = {};
-
-const ListingDetailScreen = ({}: Props) => {
+const ListingDetailScreen = () => {
   const { t } = useTranslation();
 
   return (

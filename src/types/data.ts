@@ -14,3 +14,10 @@ export interface MenuItem {
     backgroundColor: string;
   };
 }
+
+export interface Listing {
+  id: number;
+  title: string;
+  price: number;
+  image: ImageSourcePropType;
+}

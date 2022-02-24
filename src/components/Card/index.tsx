@@ -1,5 +1,5 @@
 import { View, Image, ImageSourcePropType } from "react-native";
-import React from "react";
+import React, { memo } from "react";
 
 import AppText from "../AppText";
 
@@ -23,4 +23,4 @@ const Card = ({ title, subTitle, image }: Props) => {
   );
 };
 
-export default Card;
+export default memo(Card);
