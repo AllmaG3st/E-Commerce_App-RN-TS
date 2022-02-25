@@ -8,7 +8,7 @@ type Props = {
   style?: TextStyle;
 };
 
-const AppText = ({ children, style }: Props) => {
+const AppText: React.FC<Props> = ({ children, style }) => {
   return <Text style={[globalStyles.text, style]}>{children}</Text>;
 };
 

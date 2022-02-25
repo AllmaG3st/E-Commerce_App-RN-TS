@@ -11,7 +11,7 @@ type Props = {
   image: ImageSourcePropType;
 };
 
-const Card = ({ title, subTitle, image }: Props) => {
+const Card: React.FC<Props> = ({ title = "", subTitle = "", image }) => {
   return (
     <View style={styles.card}>
       <Image style={styles.image} source={image} />

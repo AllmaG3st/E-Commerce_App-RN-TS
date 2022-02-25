@@ -17,14 +17,14 @@ type Props = {
   renderRightActions?: any;
 };
 
-const ListItem = ({
-  title,
+const ListItem: React.FC<Props> = ({
+  title = "",
   subTitle,
   IconComponent,
   image,
   onPress = () => {},
   renderRightActions,
-}: Props) => {
+}) => {
   return (
     <Swipeable renderRightActions={renderRightActions}>
       <AppTouchable onPress={onPress}>

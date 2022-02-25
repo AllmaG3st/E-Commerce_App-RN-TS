@@ -1,5 +1,5 @@
-import { View, Text, FlatList } from "react-native";
-import React from "react";
+import { FlatList } from "react-native";
+import React, { useCallback } from "react";
 
 import { Listing } from "../../types/data";
 
@@ -29,11 +29,23 @@ const listings: Listing[] = [
   },
 ];
 
+type Item = {
+  item: Listing;
+};
+
 const ListingsScreen = () => {
-  const renderListingItem = ({ item }: any) => {
+  const renderListingItem = useCallback(({ item }: Item) => {
     return (
-      <Card title={item.title} subTitle={"$" + item.price} image={item.image} />
+      <Card
+        title={item.title}
+        subTitle={`$ ${item.price}`}
+        image={item.image}
+      />
     );
+  }, []);
+
+  const keyExtractor = (listing: Listing) => {
+    return listing.id.toString();
   };
 
   return (
@@ -41,7 +53,7 @@ const ListingsScreen = () => {
       <FlatList
         showsVerticalScrollIndicator={false}
         data={listings}
-        keyExtractor={(listing) => listing.id.toString()}
+        keyExtractor={keyExtractor}
         renderItem={renderListingItem}
       />
     </Screen>

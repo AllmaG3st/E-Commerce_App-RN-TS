@@ -12,7 +12,11 @@ type Props = {
   props?: TouchableOpacityProps | TouchableNativeFeedback;
 };
 
-const AppTouchable = ({ children, onPress, ...props }: Props) => {
+const AppTouchable: React.FC<Props> = ({
+  children,
+  onPress = () => {},
+  ...props
+}) => {
   let Touchable: any = TouchableOpacity;
 
   if (Platform.OS === "android" && Platform.Version >= 21) {

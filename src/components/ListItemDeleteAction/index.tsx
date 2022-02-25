@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import React from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -12,7 +12,7 @@ type Props = {
   onPress: () => void;
 };
 
-const ListItemDeleteAction = ({ onPress }: Props) => {
+const ListItemDeleteAction: React.FC<Props> = ({ onPress = () => {} }) => {
   return (
     <AppTouchable onPress={onPress}>
       <View style={styles.container}>

@@ -13,7 +13,11 @@ interface AppTextInput extends TextInputProps {
   props?: TextInputProps;
 }
 
-const AppTextInput = ({ placeHolder, iconName, props }: AppTextInput) => {
+const AppTextInput: React.FC<AppTextInput> = ({
+  placeHolder,
+  iconName,
+  props,
+}) => {
   return (
     <View style={globalStyles.textInputContainer}>
       <MaterialCommunityIcons name={iconName} size={20} color={COLORS.medium} />

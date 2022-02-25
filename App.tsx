@@ -31,7 +31,7 @@ export default function App() {
 
   return (
     <Screen>
-      <AppTextInput iconName="email" placeHolder="Email" secureTextEntry />
+      <ListingsScreen />
     </Screen>
   );
 }
