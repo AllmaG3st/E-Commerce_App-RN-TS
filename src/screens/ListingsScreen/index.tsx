@@ -1,10 +1,10 @@
 import { FlatList } from "react-native";
 import React, { useCallback } from "react";
 
-import { Listing } from "../../types/data";
+import { Listing } from "types/data";
 
-import Card from "../../components/Card";
-import Screen from "../../components/Screen";
+import Card from "components/Card";
+import Screen from "components/Screen";
 
 import styles from "./styles";
 

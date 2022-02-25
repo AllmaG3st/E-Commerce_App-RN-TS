@@ -2,8 +2,8 @@ import { View, Image } from "react-native";
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import AppText from "../../components/AppText";
-import ListItem from "../../components/ListItem";
+import AppText from "components/AppText";
+import ListItem from "components/ListItem";
 
 import styles from "./styles";
 

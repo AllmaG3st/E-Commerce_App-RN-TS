@@ -2,13 +2,13 @@ import { View, Text, FlatList } from "react-native";
 import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
-import Screen from "../../components/Screen";
-import ListItem from "../../components/ListItem";
-import Icon from "../../components/Icon";
-import ListItemSeparator from "../../components/ListItemSeparator";
+import Screen from "components/Screen";
+import ListItem from "components/ListItem";
+import Icon from "components/Icon";
+import ListItemSeparator from "components/ListItemSeparator";
 
-import { COLORS } from "../../config/colors";
-import { MenuItem } from "../../types/data";
+import { COLORS } from "config/colors";
+import { MenuItem } from "types/data";
 
 import styles from "./styles";
 

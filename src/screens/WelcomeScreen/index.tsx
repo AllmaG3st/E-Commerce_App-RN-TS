@@ -2,14 +2,15 @@ import { View, ImageBackground, Image } from "react-native";
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-// @ts-ignore:next-line
-import mainLogo from "../../assets/logo-red.png";
-// @ts-ignore:next-line
-import background from "../../assets/background.jpg";
+// @ts-ignore
+import mainLogo from "assets/logo-red.png";
+// @ts-ignore
+import background from "assets/background.jpg";
 
-import AppText from "../../components/AppText";
-import AppButton from "../../components/AppButton";
-import { COLORS } from "../../config/colors";
+import AppText from "components/AppText";
+import AppButton from "components/AppButton";
+
+import { COLORS } from "config/colors";
 
 import styles from "./styles";
 

@@ -1,3 +1,4 @@
+import React from "react";
 import * as Font from "expo-font";
 import LottieView from "lottie-react-native";
 import { useTranslation } from "react-i18next";

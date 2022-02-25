@@ -2,7 +2,7 @@ import { View } from "react-native";
 import React from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import { COLORS } from "../../config/colors";
+import { COLORS } from "config/colors";
 
 import AppTouchable from "../AppTouchable";
 

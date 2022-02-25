@@ -6,6 +6,9 @@ import { Formik } from "formik";
 import AppButton from "../../components/AppButton";
 import Screen from "../../components/Screen";
 
+//@ts-ignore
+import mainLogo from "assets/logo-red.png";
+
 import styles from "./styles";
 
 const LoginScreen = () => {
@@ -13,10 +16,7 @@ const LoginScreen = () => {
 
   return (
     <Screen style={styles.container}>
-      <Image
-        style={styles.logo}
-        source={require("../../assets/logo-red.png")}
-      />
+      <Image style={styles.logo} source={mainLogo} />
       <Formik
         initialValues={{ email: "" }}
         onSubmit={(values) => console.log(values)}

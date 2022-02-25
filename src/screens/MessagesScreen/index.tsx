@@ -1,25 +1,25 @@
 import { FlatList } from "react-native";
 import React, { useCallback, useState } from "react";
 
-import { Message } from "../../types/data";
+import { Message } from "types/data";
 
-import ListItem from "../../components/ListItem";
-import Screen from "../../components/Screen";
-import ListItemSeparator from "../../components/ListItemSeparator";
-import ListItemDeleteAction from "../../components/ListItemDeleteAction";
+import ListItem from "components/ListItem";
+import Screen from "components/Screen";
+import ListItemSeparator from "components/ListItemSeparator";
+import ListItemDeleteAction from "components/ListItemDeleteAction";
 
 const initialMessages: Message[] = [
   {
     id: 1,
     title: "T1",
     description: "D1",
-    image: require("../../assets/margot.jpg"),
+    image: require("assets/margot.jpg"),
   },
   {
     id: 2,
     title: "T2",
     description: "D2",
-    image: require("../../assets/margot.jpg"),
+    image: require("assets/margot.jpg"),
   },
 ];
 

@@ -2,9 +2,9 @@ import { View, TextInput, TextInputProps } from "react-native";
 import React from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import { COLORS } from "../../config/colors";
+import { COLORS } from "config/colors";
 
-import globalStyles from "../../config/globalStyles";
+import globalStyles from "config/globalStyles";
 import styles from "./styles";
 
 interface AppTextInput extends TextInputProps {
