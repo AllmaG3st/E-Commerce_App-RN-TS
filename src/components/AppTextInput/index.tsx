@@ -20,7 +20,13 @@ const AppTextInput: React.FC<AppTextInput> = ({
 }) => {
   return (
     <View style={globalStyles.textInputContainer}>
-      <MaterialCommunityIcons name={iconName} size={20} color={COLORS.medium} />
+      {iconName && (
+        <MaterialCommunityIcons
+          name={iconName}
+          size={20}
+          color={COLORS.medium}
+        />
+      )}
       <TextInput
         style={styles.textInput}
         placeholder={placeHolder}

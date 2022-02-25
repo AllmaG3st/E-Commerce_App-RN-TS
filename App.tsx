@@ -19,6 +19,7 @@ import ListingsScreen from "./src/screens/ListingsScreen";
 import AppTextInput from "./src/components/AppTextInput";
 import LoginScreen from "./src/screens/LoginScreen";
 import WelcomeScreen from "./src/screens/WelcomeScreen";
+import AppPicker from "components/AppPicker";
 
 export default function App() {
   const fontsLoading = useLoadFonts();
@@ -32,5 +33,10 @@ export default function App() {
       />
     );
 
-  return <WelcomeScreen />;
+  return (
+    <Screen>
+      <AppTextInput iconName="email" placeHolder="Aleko" />
+      <AppPicker iconName="apps" placeHolder="Category" />
+    </Screen>
+  );
 }
