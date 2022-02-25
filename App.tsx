@@ -20,6 +20,13 @@ import AppTextInput from "./src/components/AppTextInput";
 import LoginScreen from "./src/screens/LoginScreen";
 import WelcomeScreen from "./src/screens/WelcomeScreen";
 import AppPicker from "components/AppPicker";
+import { Category } from "types/data";
+
+const categories: Category[] = [
+  { label: "Furniture", value: 1 },
+  { label: "Something", value: 2 },
+  { label: "Something2", value: 3 },
+];
 
 export default function App() {
   const fontsLoading = useLoadFonts();
@@ -36,7 +43,7 @@ export default function App() {
   return (
     <Screen>
       <AppTextInput iconName="email" placeHolder="Aleko" />
-      <AppPicker iconName="apps" placeHolder="Category" />
+      <AppPicker items={categories} iconName="apps" placeHolder="Category" />
     </Screen>
   );
 }

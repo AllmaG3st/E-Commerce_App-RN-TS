@@ -14,6 +14,7 @@ export default StyleSheet.create({
     fontSize: 17,
   },
   textInputContainer: {
+    marginVertical: 10,
     flexDirection: "row",
     alignItems: "center",
     borderRadius: 20,

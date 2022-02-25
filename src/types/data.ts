@@ -15,6 +15,11 @@ export interface MenuItem {
   };
 }
 
+export interface Category {
+  label: string;
+  value: number;
+}
+
 export interface Listing {
   id: number;
   title: string;
