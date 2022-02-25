@@ -28,7 +28,7 @@ const LoginScreen = () => {
               onBlur={handleBlur("email")}
               value={values.email}
             />
-            <AppButton title={t("Login")} onPress={handleSubmit} />
+            <AppButton title={t("authScreen.login")} onPress={handleSubmit} />
           </View>
         )}
       </Formik>

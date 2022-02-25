@@ -14,7 +14,7 @@ interface AppTextInput extends TextInputProps {
 }
 
 const AppTextInput: React.FC<AppTextInput> = ({
-  placeHolder,
+  placeHolder = "",
   iconName,
   props,
 }) => {

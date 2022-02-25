@@ -16,6 +16,8 @@ import ListItem from "./src/components/ListItem";
 import { COLORS } from "./src/config/colors";
 import ListingsScreen from "./src/screens/ListingsScreen";
 import AppTextInput from "./src/components/AppTextInput";
+import LoginScreen from "./src/screens/LoginScreen";
+import WelcomeScreen from "./src/screens/WelcomeScreen";
 
 export default function App() {
   const fontsLoading = useLoadFonts();
@@ -29,9 +31,5 @@ export default function App() {
       />
     );
 
-  return (
-    <Screen>
-      <ListingsScreen />
-    </Screen>
-  );
+  return <WelcomeScreen />;
 }

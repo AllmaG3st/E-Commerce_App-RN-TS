@@ -14,7 +14,11 @@ type Props = {
   bgColor?: string;
 };
 
-const AppButton: React.FC<Props> = ({ onPress = () => {}, title = '', bgColor = COLORS.primary }) => {
+const AppButton: React.FC<Props> = ({
+  onPress = () => {},
+  title = "",
+  bgColor = COLORS.primary,
+}) => {
   return (
     <AppTouchable onPress={onPress}>
       <View style={{ ...styles.button, backgroundColor: bgColor }}>

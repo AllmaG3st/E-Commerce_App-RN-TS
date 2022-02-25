@@ -2,6 +2,11 @@ import { View, ImageBackground, Image } from "react-native";
 import React from "react";
 import { useTranslation } from "react-i18next";
 
+// @ts-ignore:next-line
+import mainLogo from "../../assets/logo-red.png";
+// @ts-ignore:next-line
+import background from "../../assets/background.jpg";
+
 import AppText from "../../components/AppText";
 import AppButton from "../../components/AppButton";
 import { COLORS } from "../../config/colors";
@@ -14,15 +19,12 @@ const WelcomeScreen = () => {
   return (
     <ImageBackground
       style={styles.background}
-      source={require("../../assets/background.jpg")}
+      source={background}
       blurRadius={10}
     >
       <View style={styles.logoContainer}>
-        <Image
-          style={styles.logo}
-          source={require("../../assets/logo-red.png")}
-        />
-        <AppText style={styles.text}>Sell What you don't need</AppText>
+        <Image style={styles.logo} source={mainLogo} />
+        <AppText style={styles.text}>{t("common.heading")}</AppText>
       </View>
       <View style={styles.buttonsContainer}>
         <AppButton
