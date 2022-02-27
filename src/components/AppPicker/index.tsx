@@ -1,33 +1,48 @@
-import { View, TouchableWithoutFeedback, Modal, Text } from "react-native";
-import React, { memo, useState } from "react";
+import { View, TouchableWithoutFeedback, Modal, FlatList } from "react-native";
+import React, { memo, useCallback, useState } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import AppText from "components/AppText";
+import PickerItem from "components/PickerItem";
 
 import { COLORS } from "config/colors";
 import { Category } from "types/data";
 
 import styles from "./styles";
 import globalStyles from "config/globalStyles";
-import { FlatList, ScrollView } from "react-native-gesture-handler";
-import PickerItem from "components/PickerItem";
 
 type Props = {
+  selectedItem: Category | null;
+  onSelectedItem: (a: Category) => void;
   placeHolder: string;
   iconName: React.ComponentProps<typeof MaterialCommunityIcons>["name"];
   items: Category[];
 };
 
-const AppPicker: React.FC<Props> = ({ iconName, placeHolder, items }) => {
+const AppPicker: React.FC<Props> = ({
+  iconName,
+  placeHolder,
+  items,
+  selectedItem,
+  onSelectedItem,
+}) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const handleModalVisible = () => {
     setModalVisible((prevState) => !prevState);
   };
 
-  const handleRenderPickerItem = ({ item }: { item: Category }) => {
-    return <PickerItem label={item.label} onPress={() => {}} />;
-  };
+  const handleRenderPickerItem = useCallback(({ item }: { item: Category }) => {
+    return (
+      <PickerItem
+        label={item.label}
+        onPress={() => {
+          setModalVisible(false);
+          onSelectedItem(item);
+        }}
+      />
+    );
+  }, []);
 
   const handleKeyExtractor = (item: Category) => {
     return item.value.toString();
@@ -44,7 +59,9 @@ const AppPicker: React.FC<Props> = ({ iconName, placeHolder, items }) => {
               color={COLORS.medium}
             />
           )}
-          <AppText style={styles.text}>{placeHolder}</AppText>
+          <AppText style={styles.text}>
+            {selectedItem ? selectedItem.label : placeHolder}
+          </AppText>
           <MaterialCommunityIcons
             name="chevron-down"
             size={20}

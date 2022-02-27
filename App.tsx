@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import * as Font from "expo-font";
 import LottieView from "lottie-react-native";
 import { useTranslation } from "react-i18next";
@@ -29,6 +29,7 @@ const categories: Category[] = [
 ];
 
 export default function App() {
+  const [category, setCategory] = useState<Category>(categories[0]);
   const fontsLoading = useLoadFonts();
 
   if (fontsLoading)
@@ -43,7 +44,13 @@ export default function App() {
   return (
     <Screen>
       <AppTextInput iconName="email" placeHolder="Aleko" />
-      <AppPicker items={categories} iconName="apps" placeHolder="Category" />
+      <AppPicker
+        selectedItem={category}
+        onSelectedItem={(item: any) => setCategory(item)}
+        items={categories}
+        iconName="apps"
+        placeHolder="Category"
+      />
     </Screen>
   );
 }

@@ -3,8 +3,8 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Formik } from "formik";
 
-import AppButton from "../../components/AppButton";
-import Screen from "../../components/Screen";
+import AppButton from "components/AppButton";
+import Screen from "components/Screen";
 
 //@ts-ignore
 import mainLogo from "assets/logo-red.png";
