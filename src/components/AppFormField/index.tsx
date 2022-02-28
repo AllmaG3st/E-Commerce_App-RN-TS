@@ -1,11 +1,10 @@
 import React from "react";
 import { TextInputProps } from "react-native";
 import { useFormikContext } from "formik";
-import { useTranslation } from "react-i18next";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import AppTextInput from "components/AppTextInput";
 import ErrorMessage from "components/ErrorMessage";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 interface Props extends TextInputProps {
   error: string | undefined;

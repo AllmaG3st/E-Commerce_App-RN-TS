@@ -4,14 +4,14 @@ import { useTranslation } from "react-i18next";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
-import AppButton from "components/AppButton";
 import Screen from "components/Screen";
+import AppFormField from "components/AppFormField";
+import SubmitButton from "components/SubmitButton";
 
 //@ts-ignore
 import mainLogo from "assets/logo-red.png";
 
 import styles from "./styles";
-import AppFormField from "components/AppFormField";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -30,7 +30,7 @@ const LoginScreen = () => {
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
-        {({ handleSubmit, values, errors, touched }) => (
+        {({ values, errors, touched }) => (
           <>
             <AppFormField
               autoCapitalize="none"
@@ -56,7 +56,7 @@ const LoginScreen = () => {
               value={values.password}
               visible={touched.password}
             />
-            <AppButton title={t("authScreen.login")} onPress={handleSubmit} />
+            <SubmitButton title={t("authScreen.login")} />
           </>
         )}
       </Formik>
