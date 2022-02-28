@@ -8,7 +8,7 @@ import ErrorMessage from "../ErrorMessage";
 
 interface Props extends TextInputProps {
   error: string | undefined;
-  iconName: React.ComponentProps<typeof MaterialCommunityIcons>["name"];
+  iconName?: React.ComponentProps<typeof MaterialCommunityIcons>["name"];
   fieldName: string;
   placeHolder: string;
   value: string;

@@ -12,19 +12,20 @@ import styles from "./styles";
 import globalStyles from "config/globalStyles";
 
 type Props = {
-  selectedItem: Category;
-  onSelectedItem: (a: Category) => void;
-  placeHolder: string;
-  iconName: React.ComponentProps<typeof MaterialCommunityIcons>["name"];
+  iconName?: React.ComponentProps<typeof MaterialCommunityIcons>["name"];
   items: Category[];
+  onSelectedItem?: (a: Category) => void;
+  placeHolder: string;
+  preSelectedItem?: Category;
+  value?: string | null;
 };
 
 const AppPicker: React.FC<Props> = ({
-  iconName,
-  placeHolder,
+  iconName = null,
   items,
-  selectedItem,
-  onSelectedItem,
+  onSelectedItem = () => {},
+  placeHolder = "",
+  value,
 }) => {
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -59,9 +60,7 @@ const AppPicker: React.FC<Props> = ({
               color={COLORS.medium}
             />
           )}
-          <AppText style={styles.text}>
-            {selectedItem ? selectedItem.label : placeHolder}
-          </AppText>
+          <AppText style={styles.text}>{value ? value : placeHolder}</AppText>
           <MaterialCommunityIcons
             name="chevron-down"
             size={20}

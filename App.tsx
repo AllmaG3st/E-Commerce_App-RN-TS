@@ -21,6 +21,7 @@ import LoginScreen from "./src/screens/LoginScreen";
 import WelcomeScreen from "./src/screens/WelcomeScreen";
 import AppPicker from "components/AppPicker";
 import { Category } from "types/data";
+import ListingEditScreen from "screens/ListingEditScreen";
 
 export default function App() {
   const fontsLoading = useLoadFonts();
@@ -34,5 +35,5 @@ export default function App() {
       />
     );
 
-  return <LoginScreen />;
+  return <ListingEditScreen />;
 }
