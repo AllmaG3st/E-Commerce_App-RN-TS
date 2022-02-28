@@ -5,8 +5,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 
 import Screen from "components/Screen";
-import AppFormField from "components/AppFormField";
-import SubmitButton from "components/SubmitButton";
+import { AppFormField, SubmitButton } from "components/forms";
 
 //@ts-ignore
 import mainLogo from "assets/logo-red.png";
