@@ -1,19 +1,17 @@
 import { Image } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
 import AppButton from "components/AppButton";
-import AppTextInput from "components/AppTextInput";
 import Screen from "components/Screen";
-import ErrorMessage from "components/ErrorMessage";
 
 //@ts-ignore
 import mainLogo from "assets/logo-red.png";
 
 import styles from "./styles";
-import AppText from "components/AppText";
+import AppFormField from "components/AppFormField";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -32,30 +30,32 @@ const LoginScreen = () => {
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
-        {({ handleChange, handleSubmit, values, errors }) => (
+        {({ handleSubmit, values, errors, touched }) => (
           <>
-            <AppTextInput
+            <AppFormField
               autoCapitalize="none"
               autoCorrect={false}
+              error={errors.email}
+              fieldName="email"
               iconName="email"
               keyboardType="email-address"
-              onChangeText={handleChange("email")}
               placeHolder={t("authScreen.email")}
               textContentType="emailAddress"
               value={values.email}
+              visible={touched.email}
             />
-            <ErrorMessage error={errors.email} />
-            <AppTextInput
+            <AppFormField
               autoCapitalize="none"
               autoCorrect={false}
+              error={errors.password}
+              fieldName="password"
               iconName="lock"
-              onChangeText={handleChange("password")}
               placeHolder={t("authScreen.password")}
               secureTextEntry
               textContentType="password"
               value={values.password}
+              visible={touched.password}
             />
-            <ErrorMessage error={errors.password} />
             <AppButton title={t("authScreen.login")} onPress={handleSubmit} />
           </>
         )}

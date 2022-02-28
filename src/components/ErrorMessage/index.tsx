@@ -6,10 +6,11 @@ import globalStyles from "config/globalStyles";
 
 type Props = {
   error?: string;
+  visible: undefined | boolean;
 };
 
-const ErrorMessage: React.FC<Props> = ({ error }) => {
-  if (!error) return null;
+const ErrorMessage: React.FC<Props> = ({ error = "", visible = false }) => {
+  if (!visible || !error) return null;
 
   return <AppText style={globalStyles.error}>{error}</AppText>;
 };
