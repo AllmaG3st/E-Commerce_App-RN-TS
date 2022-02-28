@@ -3,6 +3,9 @@ import { StyleSheet } from "react-native";
 import { COLORS } from "./colors";
 
 export default StyleSheet.create({
+  error: {
+    color: "red",
+  },
   separator: {
     width: "100%",
     height: 1,

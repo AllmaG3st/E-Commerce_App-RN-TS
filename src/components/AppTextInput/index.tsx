@@ -18,7 +18,6 @@ const AppTextInput: React.FC<AppTextInput> = ({
   iconName,
   ...props
 }) => {
-  console.log(props?.value);
   return (
     <View style={globalStyles.textInputContainer}>
       {iconName && (

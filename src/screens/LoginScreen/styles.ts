@@ -3,7 +3,9 @@ import { Dimensions, StyleSheet } from "react-native";
 const { width } = Dimensions.get("window");
 
 export default StyleSheet.create({
-  container: {},
+  container: {
+    padding: 10,
+  },
   logo: {
     alignSelf: "center",
     width: width / 4,
