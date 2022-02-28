@@ -16,8 +16,9 @@ interface AppTextInput extends TextInputProps {
 const AppTextInput: React.FC<AppTextInput> = ({
   placeHolder = "",
   iconName,
-  props,
+  ...props
 }) => {
+  console.log(props?.value);
   return (
     <View style={globalStyles.textInputContainer}>
       {iconName && (

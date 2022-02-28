@@ -22,14 +22,7 @@ import WelcomeScreen from "./src/screens/WelcomeScreen";
 import AppPicker from "components/AppPicker";
 import { Category } from "types/data";
 
-const categories: Category[] = [
-  { label: "Furniture", value: 1 },
-  { label: "Something", value: 2 },
-  { label: "Something2", value: 3 },
-];
-
 export default function App() {
-  const [category, setCategory] = useState<Category>(categories[0]);
   const fontsLoading = useLoadFonts();
 
   if (fontsLoading)
@@ -41,16 +34,5 @@ export default function App() {
       />
     );
 
-  return (
-    <Screen>
-      <AppTextInput iconName="email" placeHolder="Aleko" />
-      <AppPicker
-        selectedItem={category}
-        onSelectedItem={(item: any) => setCategory(item)}
-        items={categories}
-        iconName="apps"
-        placeHolder="Category"
-      />
-    </Screen>
-  );
+  return <LoginScreen />;
 }

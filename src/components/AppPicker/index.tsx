@@ -12,7 +12,7 @@ import styles from "./styles";
 import globalStyles from "config/globalStyles";
 
 type Props = {
-  selectedItem: Category | null;
+  selectedItem: Category;
   onSelectedItem: (a: Category) => void;
   placeHolder: string;
   iconName: React.ComponentProps<typeof MaterialCommunityIcons>["name"];
