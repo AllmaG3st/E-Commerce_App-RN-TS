@@ -5,6 +5,10 @@ export default StyleSheet.create({
   container: {
     flexDirection: "row",
     padding: 15,
+    alignItems: "center",
+  },
+  iconContainer: {
+    justifyContent: "center",
   },
   image: {
     width: 70,
@@ -17,6 +21,7 @@ export default StyleSheet.create({
     fontSize: 15,
   },
   detailsContainer: {
+    flex: 1,
     marginLeft: 10,
     justifyContent: "center",
   },

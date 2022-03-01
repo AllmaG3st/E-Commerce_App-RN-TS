@@ -1,9 +1,12 @@
 import { View, ImageSourcePropType, Image } from "react-native";
 import React, { memo, ReactNode } from "react";
 import { Swipeable } from "react-native-gesture-handler";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import AppText from "../AppText";
 import AppTouchable from "../AppTouchable";
+
+import { COLORS } from "config/colors";
 
 import styles from "./styles";
 
@@ -32,9 +35,18 @@ const ListItem: React.FC<Props> = ({
           {image && <Image style={styles.image} source={image} />}
           {IconComponent}
           <View style={styles.detailsContainer}>
-            <AppText>{title}</AppText>
-            {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
+            <AppText numberOfLines={1}>{title}</AppText>
+            {subTitle && (
+              <AppText style={styles.subTitle} numberOfLines={2}>
+                {subTitle}
+              </AppText>
+            )}
           </View>
+          <MaterialCommunityIcons
+            name="chevron-right"
+            size={25}
+            color={COLORS.medium}
+          />
         </View>
       </AppTouchable>
     </Swipeable>
