@@ -1,4 +1,10 @@
-import { View, TouchableWithoutFeedback, Modal, FlatList } from "react-native";
+import {
+  View,
+  TouchableWithoutFeedback,
+  Modal,
+  FlatList,
+  Button,
+} from "react-native";
 import React, { memo, useCallback, useState } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -6,15 +12,19 @@ import AppText from "components/AppText";
 import PickerItem from "components/PickerItem";
 
 import { COLORS } from "config/colors";
-import { Category } from "types/data";
+import { Category, PickerItemComponentProps } from "types/data";
 
 import styles from "./styles";
 import globalStyles from "config/globalStyles";
+import Screen from "components/Screen";
 
 type Props = {
   iconName?: React.ComponentProps<typeof MaterialCommunityIcons>["name"];
   items: Category[];
+  numberOfColumns?: number;
   onSelectedItem?: (a: Category) => void;
+  //! change this
+  PickerItemComponent?: any;
   placeHolder: string;
   value?: Category;
 };
@@ -22,7 +32,9 @@ type Props = {
 const AppPicker: React.FC<Props> = ({
   iconName = null,
   items,
+  numberOfColumns = 1,
   onSelectedItem = () => {},
+  PickerItemComponent = PickerItem,
   placeHolder = "",
   value,
 }) => {
@@ -34,8 +46,8 @@ const AppPicker: React.FC<Props> = ({
 
   const handleRenderPickerItem = useCallback(({ item }: { item: Category }) => {
     return (
-      <PickerItem
-        label={item.label}
+      <PickerItemComponent
+        item={item}
         onPress={() => {
           setModalVisible(false);
           onSelectedItem(item);
@@ -72,11 +84,15 @@ const AppPicker: React.FC<Props> = ({
         </View>
       </TouchableWithoutFeedback>
       <Modal visible={modalVisible} animationType="slide">
-        <FlatList
-          data={items}
-          keyExtractor={handleKeyExtractor}
-          renderItem={handleRenderPickerItem}
-        />
+        <Screen>
+          <Button title="Close" onPress={handleModalVisible} />
+          <FlatList
+            data={items}
+            keyExtractor={handleKeyExtractor}
+            numColumns={numberOfColumns}
+            renderItem={handleRenderPickerItem}
+          />
+        </Screen>
       </Modal>
     </>
   );

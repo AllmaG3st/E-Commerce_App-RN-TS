@@ -11,14 +11,14 @@ import ListItemDeleteAction from "components/ListItemDeleteAction";
 const initialMessages: Message[] = [
   {
     id: 1,
-    title: "T1",
-    description: "D1",
+    title: "Margot Robbie",
+    description: "Hello, is is available?",
     image: require("assets/margot.jpg"),
   },
   {
     id: 2,
-    title: "T2",
-    description: "D2",
+    title: "Margot Robbie",
+    description: "Is the price negotiable?",
     image: require("assets/margot.jpg"),
   },
 ];
@@ -34,7 +34,6 @@ const MessagesScreen = () => {
   };
 
   const renderMessageItem = useCallback(({ item }) => {
-    console.log("hi");
     return (
       <ListItem
         title={item.title}

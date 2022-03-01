@@ -7,9 +7,11 @@ import { COLORS } from "config/colors";
 import globalStyles from "config/globalStyles";
 import styles from "./styles";
 
+import { MaterialCommunityIconsType } from "types/data";
+
 interface AppTextInput extends TextInputProps {
   placeHolder?: string;
-  iconName?: React.ComponentProps<typeof MaterialCommunityIcons>["name"];
+  iconName?: MaterialCommunityIconsType;
   props?: TextInputProps;
 }
 

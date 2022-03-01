@@ -16,6 +16,8 @@ export interface MenuItem {
 }
 
 export interface Category {
+  backgroundColor: string;
+  icon: string;
   label: string;
   value: number;
 }
@@ -25,4 +27,9 @@ export interface Listing {
   title: string;
   price: number;
   image: ImageSourcePropType;
+}
+
+export interface PickerItemComponentProps {
+  label?: string;
+  onPress?: () => void;
 }
