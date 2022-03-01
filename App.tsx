@@ -25,30 +25,23 @@ import AppPicker from "components/AppPicker";
 import { Category } from "types/data";
 import ListingEditScreen from "screens/ListingEditScreen";
 import { AppFormField } from "components/forms";
+import ImageInput from "components/ImageInput";
+import ImageInputList from "components/ImageInputList";
 
 export default function App() {
-  const [imageUri, setImageUri] = useState();
+  const [imageUris, setImageUris] = useState<string[]>([]);
+
+  const handleAdd = (uri: string) => {
+    setImageUris((prevState) => [...prevState, uri]);
+  };
+
+  const handleRemove = (uri: string) => {
+    setImageUris((prevState) =>
+      prevState.filter((imageUri) => imageUri !== uri)
+    );
+  };
 
   const fontsLoading = useLoadFonts();
-
-  const requestPermission = async () => {
-    const { granted } = await ImagePicker.requestCameraPermissionsAsync();
-
-    if (!granted) alert("You need to enable permission to access photos");
-  };
-
-  const selectImage = async () => {
-    try {
-      const result: any = await ImagePicker.launchImageLibraryAsync();
-      if (!result.cancelled) setImageUri(result.uri);
-    } catch (error: any) {
-      console.log("Error reading an image", error.message);
-    }
-  };
-
-  useEffect(() => {
-    requestPermission();
-  }, []);
 
   if (fontsLoading)
     return (
@@ -61,9 +54,11 @@ export default function App() {
 
   return (
     <Screen>
-      {/* <Button title="Select Image" onPress={selectImage} />
-      <Image source={{ uri: imageUri }} style={{ width: 200, height: 200 }} /> */}
-      <ListingEditScreen />
+      <ImageInputList
+        imageUris={imageUris}
+        onAddImage={handleAdd}
+        onRemoveImage={handleRemove}
+      />
     </Screen>
   );
 }
