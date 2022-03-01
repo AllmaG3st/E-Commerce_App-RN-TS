@@ -14,7 +14,7 @@ type Props = {
   fieldName: string;
   iconName?: React.ComponentProps<typeof MaterialCommunityIcons>["name"];
   items: Category[];
-  PickerItemComponent?: any;
+  PickerItemComponent?: React.FC;
   value: Category | any;
   visible: boolean | undefined;
 };

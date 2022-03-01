@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as Font from "expo-font";
+import * as ImagePicker from "expo-image-picker";
+import * as Permissions from "expo-permissions";
 import LottieView from "lottie-react-native";
 import { useTranslation } from "react-i18next";
 
 import { useLoadFonts } from "./src/hooks/useLoadFonts";
 import "./i18n.config";
-import { View } from "react-native";
+import { Button, Image, View } from "react-native";
 import Card from "./src/components/Card";
 import ListingDetailScreen from "./src/screens/ListingDetailsScreen";
 import ViewImageScreen from "./src/screens/ViewImageScreen";
@@ -24,7 +26,28 @@ import { Category } from "types/data";
 import ListingEditScreen from "screens/ListingEditScreen";
 
 export default function App() {
+  const [imageUri, setImageUri] = useState();
+
   const fontsLoading = useLoadFonts();
+
+  const requestPermission = async () => {
+    const { granted } = await ImagePicker.requestCameraPermissionsAsync();
+
+    if (!granted) alert("You need to enable permission to access photos");
+  };
+
+  const selectImage = async () => {
+    try {
+      const result: any = await ImagePicker.launchImageLibraryAsync();
+      if (!result.cancelled) setImageUri(result.uri);
+    } catch (error: any) {
+      console.log("Error reading an image", error.message);
+    }
+  };
+
+  useEffect(() => {
+    requestPermission();
+  }, []);
 
   if (fontsLoading)
     return (
@@ -35,5 +58,10 @@ export default function App() {
       />
     );
 
-  return <ListingEditScreen />;
+  return (
+    <Screen>
+      <Button title="Select Image" onPress={selectImage} />
+      <Image source={{ uri: imageUri }} style={{ width: 200, height: 200 }} />
+    </Screen>
+  );
 }

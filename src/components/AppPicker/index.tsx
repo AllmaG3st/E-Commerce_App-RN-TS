@@ -12,7 +12,7 @@ import AppText from "components/AppText";
 import PickerItem from "components/PickerItem";
 
 import { COLORS } from "config/colors";
-import { Category, PickerItemComponentProps } from "types/data";
+import { Category } from "types/data";
 
 import styles from "./styles";
 import globalStyles from "config/globalStyles";
@@ -23,8 +23,7 @@ type Props = {
   items: Category[];
   numberOfColumns?: number;
   onSelectedItem?: (a: Category) => void;
-  //! change this
-  PickerItemComponent?: any;
+  PickerItemComponent?: React.FC<any>;
   placeHolder: string;
   value?: Category;
 };

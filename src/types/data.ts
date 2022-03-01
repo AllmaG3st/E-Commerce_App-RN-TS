@@ -1,4 +1,10 @@
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+
 import { ImageSourcePropType } from "react-native";
+
+export type MaterialCommunityIconsType = React.ComponentProps<
+  typeof MaterialCommunityIcons
+>["name"];
 
 export interface Message {
   id: number;
@@ -16,8 +22,8 @@ export interface MenuItem {
 }
 
 export interface Category {
-  backgroundColor: string;
-  icon: string;
+  backgroundColor?: string;
+  icon?: MaterialCommunityIconsType;
   label: string;
   value: number;
 }
@@ -27,9 +33,4 @@ export interface Listing {
   title: string;
   price: number;
   image: ImageSourcePropType;
-}
-
-export interface PickerItemComponentProps {
-  label?: string;
-  onPress?: () => void;
 }

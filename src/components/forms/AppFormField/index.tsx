@@ -1,14 +1,15 @@
 import React, { memo } from "react";
 import { TextInputProps } from "react-native";
 import { useFormikContext } from "formik";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import AppTextInput from "components/AppTextInput";
 import ErrorMessage from "../ErrorMessage";
 
+import { MaterialCommunityIconsType } from "types/data";
+
 interface Props extends TextInputProps {
   error: string | undefined;
-  iconName?: React.ComponentProps<typeof MaterialCommunityIcons>["name"];
+  iconName?: MaterialCommunityIconsType;
   fieldName: string;
   placeHolder: string;
   value: string;
