@@ -1,11 +1,13 @@
 import React, { memo } from "react";
-import { TextInputProps } from "react-native";
+import { TextInputProps, View } from "react-native";
 import { useFormikContext } from "formik";
 
 import AppTextInput from "components/AppTextInput";
 import ErrorMessage from "../ErrorMessage";
 
 import { MaterialCommunityIconsType } from "types/data";
+
+import globalStyles from "config/globalStyles";
 
 interface Props extends TextInputProps {
   error: string | undefined;
@@ -29,17 +31,21 @@ const AppFormField: React.FC<Props> = ({
   const { setFieldTouched, handleChange } = useFormikContext();
 
   return (
-    <>
+    <View>
       <AppTextInput
+        error={error}
         iconName={iconName}
         onBlur={() => setFieldTouched(fieldName)}
         onChangeText={handleChange(fieldName)}
         placeHolder={placeHolder}
         value={value}
+        visible={visible}
         {...props}
       />
-      <ErrorMessage error={error} visible={visible} />
-    </>
+      <View style={globalStyles.fieldError}>
+        <ErrorMessage error={error} visible={visible} />
+      </View>
+    </View>
   );
 };
 

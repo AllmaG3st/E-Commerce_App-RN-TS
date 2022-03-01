@@ -4,7 +4,15 @@ import { COLORS } from "./colors";
 
 export default StyleSheet.create({
   error: {
-    color: "red",
+    fontSize: 15,
+    color: COLORS.danger,
+  },
+  fieldError: {
+    backgroundColor: COLORS.white,
+    right: 25,
+    paddingHorizontal: 10,
+    borderRadius: 15,
+    position: "absolute",
   },
   separator: {
     width: "100%",

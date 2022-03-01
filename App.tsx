@@ -24,6 +24,7 @@ import WelcomeScreen from "./src/screens/WelcomeScreen";
 import AppPicker from "components/AppPicker";
 import { Category } from "types/data";
 import ListingEditScreen from "screens/ListingEditScreen";
+import { AppFormField } from "components/forms";
 
 export default function App() {
   const [imageUri, setImageUri] = useState();
@@ -60,8 +61,9 @@ export default function App() {
 
   return (
     <Screen>
-      <Button title="Select Image" onPress={selectImage} />
-      <Image source={{ uri: imageUri }} style={{ width: 200, height: 200 }} />
+      {/* <Button title="Select Image" onPress={selectImage} />
+      <Image source={{ uri: imageUri }} style={{ width: 200, height: 200 }} /> */}
+      <ListingEditScreen />
     </Screen>
   );
 }

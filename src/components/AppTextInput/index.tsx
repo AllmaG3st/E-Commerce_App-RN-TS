@@ -10,18 +10,27 @@ import styles from "./styles";
 import { MaterialCommunityIconsType } from "types/data";
 
 interface AppTextInput extends TextInputProps {
-  placeHolder?: string;
+  error?: string;
   iconName?: MaterialCommunityIconsType;
+  placeHolder?: string;
   props?: TextInputProps;
+  visible?: boolean;
 }
 
 const AppTextInput: React.FC<AppTextInput> = ({
+  error = "",
   placeHolder = "",
   iconName,
+  visible = false,
   ...props
 }) => {
   return (
-    <View style={globalStyles.textInputContainer}>
+    <View
+      style={[
+        globalStyles.textInputContainer,
+        styles(error, visible).textInputContainer,
+      ]}
+    >
       {iconName && (
         <MaterialCommunityIcons
           name={iconName}
@@ -30,7 +39,7 @@ const AppTextInput: React.FC<AppTextInput> = ({
         />
       )}
       <TextInput
-        style={styles.textInput}
+        style={styles().textInput}
         placeholder={placeHolder}
         placeholderTextColor={COLORS.medium}
         {...props}

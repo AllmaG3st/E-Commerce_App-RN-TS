@@ -19,6 +19,7 @@ import globalStyles from "config/globalStyles";
 import Screen from "components/Screen";
 
 type Props = {
+  error?: string;
   iconName?: React.ComponentProps<typeof MaterialCommunityIcons>["name"];
   items: Category[];
   numberOfColumns?: number;
@@ -26,9 +27,11 @@ type Props = {
   PickerItemComponent?: React.FC<any>;
   placeHolder: string;
   value?: Category;
+  visible?: boolean;
 };
 
 const AppPicker: React.FC<Props> = ({
+  error = "",
   iconName = null,
   items,
   numberOfColumns = 1,
@@ -36,6 +39,7 @@ const AppPicker: React.FC<Props> = ({
   PickerItemComponent = PickerItem,
   placeHolder = "",
   value,
+  visible = false,
 }) => {
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -59,10 +63,17 @@ const AppPicker: React.FC<Props> = ({
     return item.value.toString();
   };
 
+  console.log(error);
+
   return (
     <>
       <TouchableWithoutFeedback onPress={handleModalVisible}>
-        <View style={globalStyles.textInputContainer}>
+        <View
+          style={[
+            globalStyles.textInputContainer,
+            styles(error, visible).textInputContainer,
+          ]}
+        >
           {iconName && (
             <MaterialCommunityIcons
               name={iconName}
@@ -71,9 +82,9 @@ const AppPicker: React.FC<Props> = ({
             />
           )}
           {value ? (
-            <AppText style={styles.text}>{value.label}</AppText>
+            <AppText style={styles().text}>{value.label}</AppText>
           ) : (
-            <AppText style={styles.placeHolder}>{placeHolder}</AppText>
+            <AppText style={styles().placeHolder}>{placeHolder}</AppText>
           )}
           <MaterialCommunityIcons
             name="chevron-down"

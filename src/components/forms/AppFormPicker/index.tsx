@@ -1,20 +1,20 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import React, { memo, useCallback } from "react";
 import { useFormikContext } from "formik";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import PickerItem from "components/PickerItem";
 import AppPicker from "components/AppPicker";
 import ErrorMessage from "../ErrorMessage";
 
-import { Category, PickerItemComponentProps } from "types/data";
+import { Category } from "types/data";
+import globalStyles from "config/globalStyles";
 
 type Props = {
   error: string | undefined;
   fieldName: string;
   iconName?: React.ComponentProps<typeof MaterialCommunityIcons>["name"];
   items: Category[];
-  PickerItemComponent?: React.FC;
+  PickerItemComponent?: React.FC<any>;
   value: Category | any;
   visible: boolean | undefined;
 };
@@ -35,18 +35,22 @@ const AppFormPicker: React.FC<Props> = ({
   }, []);
 
   return (
-    <>
+    <View>
       <AppPicker
+        error={error}
         iconName={iconName}
         items={items}
         numberOfColumns={3}
         onSelectedItem={onSelectedItem}
         PickerItemComponent={PickerItemComponent}
         placeHolder="Category"
+        visible={visible}
         value={value}
       />
-      <ErrorMessage error={error} visible={visible} />
-    </>
+      <View style={globalStyles.fieldError}>
+        <ErrorMessage error={error} visible={visible} />
+      </View>
+    </View>
   );
 };
 
