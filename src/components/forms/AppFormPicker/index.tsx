@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import React from "react";
+import React, { memo, useCallback } from "react";
 import { useFormikContext } from "formik";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -13,7 +13,7 @@ type Props = {
   fieldName: string;
   iconName?: React.ComponentProps<typeof MaterialCommunityIcons>["name"];
   items: Category[];
-  value: string | null;
+  value: Category | any;
   visible: boolean | undefined;
 };
 
@@ -27,14 +27,16 @@ const AppFormPicker: React.FC<Props> = ({
 }) => {
   const { setFieldValue } = useFormikContext();
 
+  const onSelectedItem = useCallback((item: Category) => {
+    setFieldValue(fieldName, item);
+  }, []);
+
   return (
     <>
       <AppPicker
         iconName={iconName}
         items={items}
-        onSelectedItem={(item: Category) =>
-          setFieldValue(fieldName, item.label)
-        }
+        onSelectedItem={onSelectedItem}
         placeHolder="Category"
         value={value}
       />
@@ -43,4 +45,4 @@ const AppFormPicker: React.FC<Props> = ({
   );
 };
 
-export default AppFormPicker;
+export default memo(AppFormPicker);

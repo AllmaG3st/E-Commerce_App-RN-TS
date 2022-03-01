@@ -16,8 +16,7 @@ type Props = {
   items: Category[];
   onSelectedItem?: (a: Category) => void;
   placeHolder: string;
-  preSelectedItem?: Category;
-  value?: string | null;
+  value?: Category;
 };
 
 const AppPicker: React.FC<Props> = ({
@@ -60,7 +59,11 @@ const AppPicker: React.FC<Props> = ({
               color={COLORS.medium}
             />
           )}
-          <AppText style={styles.text}>{value ? value : placeHolder}</AppText>
+          {value ? (
+            <AppText style={styles.text}>{value.label}</AppText>
+          ) : (
+            <AppText style={styles.placeHolder}>{placeHolder}</AppText>
+          )}
           <MaterialCommunityIcons
             name="chevron-down"
             size={20}

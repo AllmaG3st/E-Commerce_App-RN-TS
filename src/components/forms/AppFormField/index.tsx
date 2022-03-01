@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { TextInputProps } from "react-native";
 import { useFormikContext } from "formik";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -42,4 +42,4 @@ const AppFormField: React.FC<Props> = ({
   );
 };
 
-export default AppFormField;
+export default memo(AppFormField);

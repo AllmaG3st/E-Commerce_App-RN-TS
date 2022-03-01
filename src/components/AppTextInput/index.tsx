@@ -30,6 +30,7 @@ const AppTextInput: React.FC<AppTextInput> = ({
       <TextInput
         style={styles.textInput}
         placeholder={placeHolder}
+        placeholderTextColor={COLORS.medium}
         {...props}
       />
     </View>
