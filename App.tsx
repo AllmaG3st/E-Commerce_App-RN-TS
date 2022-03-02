@@ -29,18 +29,6 @@ import ImageInput from "components/ImageInput";
 import ImageInputList from "components/ImageInputList";
 
 export default function App() {
-  const [imageUris, setImageUris] = useState<string[]>([]);
-
-  const handleAdd = (uri: string) => {
-    setImageUris((prevState) => [...prevState, uri]);
-  };
-
-  const handleRemove = (uri: string) => {
-    setImageUris((prevState) =>
-      prevState.filter((imageUri) => imageUri !== uri)
-    );
-  };
-
   const fontsLoading = useLoadFonts();
 
   if (fontsLoading)
@@ -54,11 +42,7 @@ export default function App() {
 
   return (
     <Screen>
-      <ImageInputList
-        imageUris={imageUris}
-        onAddImage={handleAdd}
-        onRemoveImage={handleRemove}
-      />
+      <ListingEditScreen />
     </Screen>
   );
 }

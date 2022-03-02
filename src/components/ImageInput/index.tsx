@@ -9,7 +9,7 @@ import styles from "./styles";
 
 type Props = {
   imageUri?: string;
-  onChangeImage: (imageUri?: any) => void;
+  onChangeImage: (imageUri?: string) => void;
 };
 
 const ImageInput: React.FC<Props> = ({

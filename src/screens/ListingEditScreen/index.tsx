@@ -6,9 +6,11 @@ import * as Yup from "yup";
 import Screen from "components/Screen";
 import { AppFormField, AppFormPicker, SubmitButton } from "components/forms";
 import CategoryPickerItem from "components/CategoryPickerItem";
+import FormImagePicker from "components/forms/FormImagePicker";
 
 import { Category } from "types/data";
 import styles from "./styles";
+import ImageInputList from "components/ImageInputList";
 
 const categories: Category[] = [
   {
@@ -72,11 +74,20 @@ const validationSchema = Yup.object().shape({
   price: Yup.number().required().min(1).max(10000).label("Price"),
   description: Yup.string().label("Description"),
   category: Yup.object().required().nullable().label("Category"),
+  images: Yup.array().min(1, "Please select at list one image"),
 });
 
 type Props = {};
 const ListingEditScreen: React.FC<Props> = () => {
   const { t } = useTranslation();
+
+  // const handleAdd = (uri: string | undefined) => {
+  //   setFieldValue(name, [...imageUris, uri]);
+  // };
+
+  // const handleRemove = (uri: string) => {
+  //   setFieldValue(imageUris.filter((imageUri: any) => imageUri !== uri));
+  // };
 
   return (
     <Screen style={styles.screen}>
@@ -86,12 +97,19 @@ const ListingEditScreen: React.FC<Props> = () => {
           price: "",
           description: "",
           category: null,
+          images: [],
         }}
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
-        {({ errors, touched, values }) => (
+        {({ errors, touched, values, setFieldValue }) => (
           <>
+            <FormImagePicker
+              error={errors.images}
+              fieldName="images"
+              imageUris={values.images}
+              visible={touched.images}
+            />
             <AppFormField
               autoCorrect={false}
               error={errors.title}

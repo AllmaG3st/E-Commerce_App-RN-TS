@@ -1,7 +1,8 @@
-import { View, Text, ScrollView, ScrollViewProps } from "react-native";
+import { View, ScrollView } from "react-native";
 import React, { useRef } from "react";
 
 import ImageInput from "components/ImageInput";
+
 import styles from "./styles";
 
 type Props = {
