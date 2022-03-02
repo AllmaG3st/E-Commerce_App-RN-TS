@@ -82,7 +82,6 @@ type Props = {};
 const ListingEditScreen: React.FC<Props> = () => {
   const location = useGetLocation();
 
-  console.log(location);
   const { t } = useTranslation();
 
   return (

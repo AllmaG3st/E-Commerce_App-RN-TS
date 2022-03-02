@@ -1,6 +1,8 @@
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import { ImageSourcePropType } from "react-native";
+import { RouteProp } from "@react-navigation/native";
 
 export type MaterialCommunityIconsType = React.ComponentProps<
   typeof MaterialCommunityIcons
@@ -34,3 +36,17 @@ export interface Listing {
   price: number;
   image: ImageSourcePropType;
 }
+
+export type AuthNavigatorParamList = {
+  Welcome: undefined;
+  Login: undefined;
+  Register: undefined;
+};
+
+export type AuthNavigationGenericProp<
+  T extends keyof AuthNavigatorParamList & string
+> = NativeStackNavigationProp<AuthNavigatorParamList, T>;
+
+export type AuthRouteGenericProp<
+  T extends keyof AuthNavigatorParamList & string
+> = RouteProp<AuthNavigatorParamList, T>;

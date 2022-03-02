@@ -27,6 +27,10 @@ import ListingEditScreen from "screens/ListingEditScreen";
 import { AppFormField } from "components/forms";
 import ImageInput from "components/ImageInput";
 import ImageInputList from "components/ImageInputList";
+import RegisterScreen from "screens/RegisterScreen";
+import Navigation from "./src/navigation";
+import { NavigationContainer } from "@react-navigation/native";
+import AuthNavigator from "./src/navigation/AuthNavigator";
 
 export default function App() {
   const fontsLoading = useLoadFonts();
@@ -40,9 +44,5 @@ export default function App() {
       />
     );
 
-  return (
-    <Screen>
-      <ListingEditScreen />
-    </Screen>
-  );
+  return <Navigation />;
 }
