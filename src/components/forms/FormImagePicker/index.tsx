@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useCallback } from "react";
 import ImageInputList from "components/ImageInputList";
 
 import ErrorMessage from "../ErrorMessage";
@@ -19,16 +19,16 @@ const FormImagePicker: React.FC<Props> = ({
 }) => {
   const { setFieldValue }: any = useFormikContext();
 
-  const handleAdd = (uri: string | undefined) => {
+  const handleAdd = useCallback((uri: string | undefined) => {
     setFieldValue(fieldName, [...imageUris, uri]);
-  };
+  }, []);
 
-  const handleRemove = (uri: string) => {
+  const handleRemove = useCallback((uri: string) => {
     setFieldValue(
       fieldName,
       imageUris.filter((imageUri: any) => imageUri !== uri)
     );
-  };
+  }, []);
 
   return (
     <>

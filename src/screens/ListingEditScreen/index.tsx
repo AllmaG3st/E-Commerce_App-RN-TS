@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
 import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
@@ -8,9 +8,10 @@ import { AppFormField, AppFormPicker, SubmitButton } from "components/forms";
 import CategoryPickerItem from "components/CategoryPickerItem";
 import FormImagePicker from "components/forms/FormImagePicker";
 
+import { useGetLocation } from "hooks/useGetLocation";
 import { Category } from "types/data";
+
 import styles from "./styles";
-import ImageInputList from "components/ImageInputList";
 
 const categories: Category[] = [
   {
@@ -79,15 +80,10 @@ const validationSchema = Yup.object().shape({
 
 type Props = {};
 const ListingEditScreen: React.FC<Props> = () => {
+  const location = useGetLocation();
+
+  console.log(location);
   const { t } = useTranslation();
-
-  // const handleAdd = (uri: string | undefined) => {
-  //   setFieldValue(name, [...imageUris, uri]);
-  // };
-
-  // const handleRemove = (uri: string) => {
-  //   setFieldValue(imageUris.filter((imageUri: any) => imageUri !== uri));
-  // };
 
   return (
     <Screen style={styles.screen}>
@@ -99,7 +95,7 @@ const ListingEditScreen: React.FC<Props> = () => {
           category: null,
           images: [],
         }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={() => console.log(location)}
         validationSchema={validationSchema}
       >
         {({ errors, touched, values, setFieldValue }) => (

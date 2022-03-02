@@ -1,5 +1,5 @@
 import { View, ScrollView } from "react-native";
-import React, { useRef } from "react";
+import React, { memo, useCallback, useRef } from "react";
 
 import ImageInput from "components/ImageInput";
 
@@ -22,9 +22,9 @@ const ImageInputList: React.FC<Props> = ({
     scrollView.current?.scrollToEnd();
   };
 
-  const handleAddImage = (uri: string | undefined) => {
+  const handleAddImage = useCallback((uri: string | undefined) => {
     onAddImage(uri);
-  };
+  }, []);
 
   return (
     <View>
@@ -49,4 +49,4 @@ const ImageInputList: React.FC<Props> = ({
   );
 };
 
-export default ImageInputList;
+export default memo(ImageInputList);

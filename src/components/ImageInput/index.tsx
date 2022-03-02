@@ -1,5 +1,5 @@
 import { Alert, Image, TouchableWithoutFeedback, View } from "react-native";
-import React, { useEffect } from "react";
+import React, { memo, useEffect } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 
@@ -68,4 +68,4 @@ const ImageInput: React.FC<Props> = ({
   );
 };
 
-export default ImageInput;
+export default memo(ImageInput);
