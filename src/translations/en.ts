@@ -19,7 +19,11 @@ export default {
     post: "Post",
   },
   navigation: {
+    account: "Account",
+    addListing: "Add Listing",
+    listings: "Listings",
     listingDetails: "Listing Details",
+    messages: "Messages",
   },
   registerScreen: {
     email: "Email",

@@ -10,11 +10,15 @@ import { COLORS } from "config/colors";
 
 const NewListingButton = () => {
   const { navigate } =
-    useNavigation<AppNavigationGenericProp<"ListingEditTab">>();
+    useNavigation<AppNavigationGenericProp<"AddListingTab">>();
+
+  const handleNavigateToListingEditScreen = () => {
+    navigate("AddListingTab");
+  };
 
   return (
     <View style={styles.container}>
-      <AppTouchable onPress={() => navigate("ListingEditTab")}>
+      <AppTouchable onPress={handleNavigateToListingEditScreen}>
         <MaterialCommunityIcons name="plus-circle" color="white" size={40} />
       </AppTouchable>
     </View>

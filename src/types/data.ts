@@ -87,7 +87,7 @@ export type AccountRouteGenericProp<
 
 //App Navigator Types
 export type AppNavigatorParamList = {
-  Feed: FeedNavigatorParamList;
+  FeedTab: FeedNavigatorParamList;
   ListingEditTab: undefined;
   AccountTab: AccountNavigatorParamList;
 };
