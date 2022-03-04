@@ -1,7 +1,8 @@
 import { FlatList } from "react-native";
 import React, { useCallback } from "react";
+import { useNavigation } from "@react-navigation/native";
 
-import { Listing } from "types/data";
+import { FeedNavigationGenericProp, Listing } from "types/data";
 
 import Card from "components/Card";
 import Screen from "components/Screen";
@@ -34,12 +35,20 @@ type Item = {
 };
 
 const ListingsScreen = () => {
+  const { navigate } = useNavigation<FeedNavigationGenericProp<"Listings">>();
+
+  // const handleNavigateToListingDetails = (item: Listing) => {
+  //   console.log();
+  //   navigate("ListingDetails", item);
+  // };
+
   const renderListingItem = useCallback(({ item }: Item) => {
     return (
       <Card
-        title={item.title}
-        subTitle={`$ ${item.price}`}
         image={item.image}
+        subTitle={`$ ${item.price}`}
+        onPress={() => navigate("ListingDetails", { item })}
+        title={item.title}
       />
     );
   }, []);

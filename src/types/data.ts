@@ -1,8 +1,8 @@
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-
 import { ImageSourcePropType } from "react-native";
 import { RouteProp } from "@react-navigation/native";
+import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
 
 export type MaterialCommunityIconsType = React.ComponentProps<
   typeof MaterialCommunityIcons
@@ -37,6 +37,9 @@ export interface Listing {
   image: ImageSourcePropType;
 }
 
+//!Navigator Types
+
+//Auth Navigator Types
 export type AuthNavigatorParamList = {
   Welcome: undefined;
   Login: undefined;
@@ -50,3 +53,26 @@ export type AuthNavigationGenericProp<
 export type AuthRouteGenericProp<
   T extends keyof AuthNavigatorParamList & string
 > = RouteProp<AuthNavigatorParamList, T>;
+
+//Feed Navigator Types
+export type FeedNavigatorParamList = {
+  Listings: undefined;
+  ListingDetails: {
+    item: Listing;
+  };
+};
+
+export type FeedNavigationGenericProp<
+  T extends keyof FeedNavigatorParamList & string
+> = BottomTabNavigationProp<FeedNavigatorParamList, T>;
+
+export type FeedRouteGenericProp<
+  T extends keyof FeedNavigatorParamList & string
+> = RouteProp<FeedNavigatorParamList, T>;
+
+//App Navigator Types
+export type AppNavigatorParamList = {
+  Feed: FeedNavigatorParamList;
+  ListingEditTab: undefined;
+  AccountTab: undefined;
+};
