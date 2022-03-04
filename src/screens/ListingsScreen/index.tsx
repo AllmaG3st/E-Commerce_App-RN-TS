@@ -37,11 +37,6 @@ type Item = {
 const ListingsScreen = () => {
   const { navigate } = useNavigation<FeedNavigationGenericProp<"Listings">>();
 
-  // const handleNavigateToListingDetails = (item: Listing) => {
-  //   console.log();
-  //   navigate("ListingDetails", item);
-  // };
-
   const renderListingItem = useCallback(({ item }: Item) => {
     return (
       <Card

@@ -40,11 +40,11 @@ const WelcomeScreen = () => {
         <AppText style={styles.text}>{t("common.heading")}</AppText>
       </View>
       <View style={styles.buttonsContainer}>
-        <AppButton onPress={handleLoginPress} title={t("Login")} />
+        <AppButton onPress={handleLoginPress} title={t("authScreen.login")} />
         <AppButton
           bgColor={COLORS.secondary}
           onPress={handleRegisterPress}
-          title={t("Register")}
+          title={t("authScreen.register")}
         />
       </View>
     </ImageBackground>

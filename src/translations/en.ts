@@ -18,6 +18,9 @@ export default {
     title: "Title",
     post: "Post",
   },
+  navigation: {
+    listingDetails: "Listing Details",
+  },
   registerScreen: {
     email: "Email",
     name: "Name",

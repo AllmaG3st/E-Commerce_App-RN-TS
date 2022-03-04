@@ -15,8 +15,20 @@ const AppNavigator = () => (
       component={FeedNavigator}
       options={{ headerShown: false }}
     />
-    <Tab.Screen name="ListingEditTab" component={ListingEditScreen} />
-    <Tab.Screen name="AccountTab" component={AccountScreen} />
+    <Tab.Screen
+      name="ListingEditTab"
+      component={ListingEditScreen}
+      options={{
+        title: "Edit Listing",
+      }}
+    />
+    <Tab.Screen
+      name="AccountTab"
+      component={AccountScreen}
+      options={{
+        title: "Account",
+      }}
+    />
   </Tab.Navigator>
 );
 
