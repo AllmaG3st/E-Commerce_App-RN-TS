@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { Formik } from "formik";
 import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
@@ -12,6 +12,7 @@ import { useLocation } from "hooks/useLocation";
 import { Category } from "types/data";
 
 import styles from "./styles";
+import ImageInputList from "components/ImageInputList";
 
 const categories: Category[] = [
   {
@@ -80,6 +81,8 @@ const validationSchema = Yup.object().shape({
 
 type Props = {};
 const ListingEditScreen: React.FC<Props> = () => {
+  const [images, setImages] = useState([]);
+
   const location = useLocation();
 
   const { t } = useTranslation();
@@ -97,13 +100,14 @@ const ListingEditScreen: React.FC<Props> = () => {
         onSubmit={() => console.log(location)}
         validationSchema={validationSchema}
       >
-        {({ errors, touched, values, setFieldValue }) => (
+        {({ errors, touched, values }) => (
           <>
             <FormImagePicker
               error={errors.images}
               fieldName="images"
-              imageUris={values.images}
+              imageUris={images}
               visible={touched.images}
+              setImages={setImages}
             />
             <AppFormField
               autoCorrect={false}
@@ -151,4 +155,4 @@ const ListingEditScreen: React.FC<Props> = () => {
   );
 };
 
-export default ListingEditScreen;
+export default memo(ListingEditScreen);

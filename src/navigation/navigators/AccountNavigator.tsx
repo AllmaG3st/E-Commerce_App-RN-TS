@@ -6,7 +6,6 @@ import { AccountScreen, MessagesScreen } from "screens";
 import { AccountNavigatorParamList } from "types/data";
 
 import { ROUTES } from "../config/routes";
-import { COLORS } from "config/colors";
 
 const Stack = createNativeStackNavigator<AccountNavigatorParamList>();
 

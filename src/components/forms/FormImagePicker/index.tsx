@@ -8,6 +8,7 @@ type Props = {
   error: any;
   fieldName: string;
   imageUris: string[];
+  setImages: any;
   visible: any;
 };
 
@@ -15,18 +16,19 @@ const FormImagePicker: React.FC<Props> = ({
   error = "",
   fieldName = "",
   imageUris = [],
+  setImages,
   visible = false,
 }) => {
-  const { setFieldValue }: any = useFormikContext();
+  const { setFieldValue } = useFormikContext();
 
-  const handleAdd = useCallback((uri: string | undefined) => {
-    setFieldValue(fieldName, [...imageUris, uri]);
-  }, []);
+  const handleAdd = (uri: string | undefined) => {
+    setImages((prevState: any) => [...prevState, uri]);
+    setFieldValue(fieldName, [uri]);
+  };
 
   const handleRemove = useCallback((uri: string) => {
-    setFieldValue(
-      fieldName,
-      imageUris.filter((imageUri: any) => imageUri !== uri)
+    setImages((prevState: any) =>
+      prevState.filter((imageUri: any) => imageUri !== uri)
     );
   }, []);
 
