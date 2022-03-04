@@ -91,3 +91,7 @@ export type AppNavigatorParamList = {
   ListingEditTab: undefined;
   AccountTab: AccountNavigatorParamList;
 };
+
+export type AppNavigationGenericProp<
+  T extends keyof AppNavigatorParamList & string
+> = BottomTabNavigationProp<AppNavigatorParamList, T>;
