@@ -8,7 +8,7 @@ import { AppFormField, AppFormPicker, SubmitButton } from "components/forms";
 import CategoryPickerItem from "components/CategoryPickerItem";
 import FormImagePicker from "components/forms/FormImagePicker";
 
-import { useGetLocation } from "hooks/useGetLocation";
+import { useLocation } from "hooks/useLocation";
 import { Category } from "types/data";
 
 import styles from "./styles";
@@ -80,7 +80,7 @@ const validationSchema = Yup.object().shape({
 
 type Props = {};
 const ListingEditScreen: React.FC<Props> = () => {
-  const location = useGetLocation();
+  const location = useLocation();
 
   const { t } = useTranslation();
 

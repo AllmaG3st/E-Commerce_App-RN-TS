@@ -1,10 +1,11 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { AccountScreen, ListingEditScreen, ListingsScreen } from "screens";
+import { ListingEditScreen } from "screens";
+import FeedNavigator from "./FeedNavigator";
+import AccountNavigator from "./AccountNavigator";
 
 import { AppNavigatorParamList } from "types/data";
-import FeedNavigator from "./FeedNavigator";
 
 const Tab = createBottomTabNavigator<AppNavigatorParamList>();
 
@@ -24,8 +25,9 @@ const AppNavigator = () => (
     />
     <Tab.Screen
       name="AccountTab"
-      component={AccountScreen}
+      component={AccountNavigator}
       options={{
+        headerShown: false,
         title: "Account",
       }}
     />

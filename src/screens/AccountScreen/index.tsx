@@ -1,14 +1,16 @@
-import { View, Text, FlatList } from "react-native";
+import { View, FlatList } from "react-native";
 import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigation } from "@react-navigation/native";
 
 import Screen from "components/Screen";
 import ListItem from "components/ListItem";
 import Icon from "components/Icon";
 import ListItemSeparator from "components/ListItemSeparator";
 
+import { AccountNavigationGenericProp, MenuItem } from "types/data";
+
 import { COLORS } from "config/colors";
-import { MenuItem } from "types/data";
 
 import styles from "./styles";
 
@@ -21,16 +23,19 @@ const menuItems: MenuItem[] = [
     },
   },
   {
-    title: "My Account",
+    title: "My Messages",
     icon: {
       name: "email",
       backgroundColor: COLORS.secondary,
     },
+    targetScreen: "Messages",
   },
 ];
 
 const AccountScreen = () => {
   const { t } = useTranslation();
+
+  const { navigate } = useNavigation<AccountNavigationGenericProp<"Account">>();
 
   const renderListItem = useCallback(({ item }) => {
     return (
@@ -43,6 +48,7 @@ const AccountScreen = () => {
             size={50}
           />
         }
+        onPress={() => navigate(item.targetScreen)}
       />
     );
   }, []);

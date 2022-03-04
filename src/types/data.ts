@@ -21,6 +21,7 @@ export interface MenuItem {
     name: string;
     backgroundColor: string;
   };
+  targetScreen?: string;
 }
 
 export interface Category {
@@ -64,15 +65,29 @@ export type FeedNavigatorParamList = {
 
 export type FeedNavigationGenericProp<
   T extends keyof FeedNavigatorParamList & string
-> = BottomTabNavigationProp<FeedNavigatorParamList, T>;
+> = NativeStackNavigationProp<FeedNavigatorParamList, T>;
 
 export type FeedRouteGenericProp<
   T extends keyof FeedNavigatorParamList & string
 > = RouteProp<FeedNavigatorParamList, T>;
 
+//Account Navigator Types
+export type AccountNavigatorParamList = {
+  Account: undefined;
+  Messages: undefined;
+};
+
+export type AccountNavigationGenericProp<
+  T extends keyof AccountNavigatorParamList & string
+> = NativeStackNavigationProp<AccountNavigatorParamList, T>;
+
+export type AccountRouteGenericProp<
+  T extends keyof AccountNavigatorParamList & string
+> = RouteProp<AccountNavigatorParamList, T>;
+
 //App Navigator Types
 export type AppNavigatorParamList = {
   Feed: FeedNavigatorParamList;
   ListingEditTab: undefined;
-  AccountTab: undefined;
+  AccountTab: AccountNavigatorParamList;
 };

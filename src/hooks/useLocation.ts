@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import * as Location from "expo-location";
 
-export const useGetLocation = () => {
+export const useLocation = () => {
   const [location, setLocation] = useState({});
 
   useEffect(() => {
@@ -13,7 +13,7 @@ export const useGetLocation = () => {
       try {
         const {
           coords: { latitude, longitude },
-        }: any = await Location.getLastKnownPositionAsync();
+        }: any = await Location.getCurrentPositionAsync();
         setLocation({ latitude, longitude });
       } catch (error: any) {
         console.log("Error during receiving coordinates", error.message);
