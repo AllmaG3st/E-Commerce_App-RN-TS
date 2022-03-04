@@ -10,13 +10,13 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import AppText from "components/AppText";
 import PickerItem from "components/PickerItem";
+import Screen from "components/Screen";
 
 import { COLORS } from "config/colors";
 import { Category } from "types/data";
 
 import styles from "./styles";
 import globalStyles from "config/globalStyles";
-import Screen from "components/Screen";
 
 type Props = {
   error?: string;
@@ -62,8 +62,6 @@ const AppPicker: React.FC<Props> = ({
   const handleKeyExtractor = (item: Category) => {
     return item.value.toString();
   };
-
-  console.log(error);
 
   return (
     <>

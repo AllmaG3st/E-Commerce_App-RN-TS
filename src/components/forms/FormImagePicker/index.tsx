@@ -1,8 +1,8 @@
 import React, { memo, useCallback } from "react";
-import ImageInputList from "components/ImageInputList";
-
-import ErrorMessage from "../ErrorMessage";
 import { useFormikContext } from "formik";
+
+import ImageInputList from "components/ImageInputList";
+import ErrorMessage from "../ErrorMessage";
 
 type Props = {
   error: any;
@@ -22,12 +22,12 @@ const FormImagePicker: React.FC<Props> = ({
   const { setFieldValue } = useFormikContext();
 
   const handleAdd = (uri: string | undefined) => {
-    setImages((prevState: any) => [...prevState, uri]);
+    setImages((prevState: string[]) => [...prevState, uri]);
     setFieldValue(fieldName, [uri]);
   };
 
   const handleRemove = useCallback((uri: string) => {
-    setImages((prevState: any) =>
+    setImages((prevState: string[]) =>
       prevState.filter((imageUri: any) => imageUri !== uri)
     );
   }, []);
