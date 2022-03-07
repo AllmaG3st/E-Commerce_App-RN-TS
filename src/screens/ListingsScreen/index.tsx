@@ -13,32 +13,16 @@ import styles from "./styles";
 import AppButton from "components/AppButton";
 import LoadingError from "./LoadingError";
 import AppActivityIndicator from "components/AppActivityIndicator";
+import { useLoadListings } from "hooks/useLoadListings";
 
 type Item = {
   item: Listing;
 };
 
 const ListingsScreen = () => {
-  const [listings, setListings] = useState<Listing[]>([]);
-  const [error, setError] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [listings, error, isLoading, loadListings]: any = useLoadListings();
 
   const { navigate } = useNavigation<FeedNavigationGenericProp<"Listings">>();
-
-  const loadListings = useCallback(async () => {
-    setIsLoading(true);
-    const { ok, data }: any = await listingsApi.getListings();
-    setIsLoading(false);
-
-    if (!ok) return setError(true);
-
-    setError(false);
-    setListings(data);
-  }, []);
-
-  useEffect(() => {
-    loadListings();
-  }, [loadListings]);
 
   const renderListingItem = useCallback(({ item }: Item) => {
     return (
