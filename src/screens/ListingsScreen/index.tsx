@@ -1,7 +1,8 @@
 import { FlatList } from "react-native";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 
+import listingsApi from "api/listings";
 import { FeedNavigationGenericProp, Listing } from "types/data";
 
 import Card from "components/Card";
@@ -9,38 +10,27 @@ import Screen from "components/Screen";
 
 import styles from "./styles";
 
-const listings: Listing[] = [
-  {
-    id: 1,
-    title: "Joystick",
-    price: 25,
-    image: require("../../assets/joystick.jpg"),
-  },
-  {
-    id: 2,
-    title: "RTX 3090",
-    price: 2999,
-    image: require("../../assets/graphic-card.jpg"),
-  },
-  {
-    id: 3,
-    title: "Pool Cue Supernova-II",
-    price: 99,
-    image: require("../../assets/cue.jpg"),
-  },
-];
-
 type Item = {
   item: Listing;
 };
 
 const ListingsScreen = () => {
+  const [listings, setListings] = useState<Listing[]>([]);
+
+  useEffect(() => {
+    const loadListings = async () => {
+      const response: any = await listingsApi.getListings();
+      setListings(response.data);
+    };
+    loadListings();
+  }, []);
+
   const { navigate } = useNavigation<FeedNavigationGenericProp<"Listings">>();
 
   const renderListingItem = useCallback(({ item }: Item) => {
     return (
       <Card
-        image={item.image}
+        imageUrl={item.images[0].url}
         subTitle={`$ ${item.price}`}
         onPress={() => navigate("ListingDetails", { item })}
         title={item.title}

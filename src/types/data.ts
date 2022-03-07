@@ -31,11 +31,21 @@ export interface Category {
   value: number;
 }
 
+//!Listings
+
+type ListingImage = {
+  url: string;
+  thumbnailUrl?: string;
+};
+
 export interface Listing {
+  categoryId: 1;
   id: number;
-  title: string;
+  images: ListingImage[];
+  location: object;
   price: number;
-  image: ImageSourcePropType;
+  title: string;
+  userId: number;
 }
 
 //!Navigator Types
