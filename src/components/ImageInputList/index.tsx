@@ -29,9 +29,10 @@ const ImageInputList: React.FC<Props> = ({
   return (
     <View>
       <ScrollView
-        ref={scrollView}
         horizontal
         onContentSizeChange={handleScrollViewEnd}
+        ref={scrollView}
+        showsHorizontalScrollIndicator={false}
       >
         <View style={styles.container}>
           {imageUris.map((uri) => (
