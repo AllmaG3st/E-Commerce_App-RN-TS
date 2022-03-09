@@ -8,13 +8,17 @@ import Screen from "components/Screen";
 import LoadingError from "./LoadingError";
 
 import listingsApi from "api/listings";
-import { FeedNavigationGenericProp, Listing, useApiProps } from "types/data";
+import {
+  FeedNavigationGenericProp,
+  ListingResponse,
+  useApiProps,
+} from "types/data";
 import { useApi } from "hooks/useApi";
 
 import styles from "./styles";
 
 type Item = {
-  item: Listing;
+  item: ListingResponse;
 };
 
 const ListingsScreen = () => {
@@ -38,7 +42,7 @@ const ListingsScreen = () => {
     );
   }, []);
 
-  const keyExtractor = (listing: Listing) => {
+  const keyExtractor = (listing: ListingResponse) => {
     return listing.id.toString();
   };
 

@@ -31,7 +31,10 @@ const ListingEditScreen: React.FC<Props> = () => {
 
   const location = useLocation();
 
+  const handleOnDone = () => setUploadVisible(false);
+
   const handleSubmit = async (listing: any) => {
+    setProgress(0);
     setUploadVisible(true);
     const result = await listingsApi.addListing(
       {
@@ -43,15 +46,21 @@ const ListingEditScreen: React.FC<Props> = () => {
     );
     setUploadVisible(false);
 
-    if (!result.ok) return alert("Could not save the listing");
-    alert("Success");
+    if (!result.ok) {
+      setUploadVisible(false);
+      return alert("Could not save the listing");
+    }
   };
 
   const { t } = useTranslation();
 
   return (
     <Screen style={styles.screen}>
-      <UploadScreen progress={progress} visible={uploadVisible} />
+      <UploadScreen
+        onDone={handleOnDone}
+        progress={progress}
+        visible={uploadVisible}
+      />
       <Formik
         initialValues={{
           title: "",
