@@ -2,25 +2,28 @@ import { FlatList, View } from "react-native";
 import React, { useCallback, useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 
-import AppText from "components/AppText";
+import AppActivityIndicator from "components/AppActivityIndicator";
 import Card from "components/Card";
 import Screen from "components/Screen";
+import LoadingError from "./LoadingError";
 
 import listingsApi from "api/listings";
-import { FeedNavigationGenericProp, Listing } from "types/data";
+import { FeedNavigationGenericProp, Listing, useApiProps } from "types/data";
+import { useApi } from "hooks/useApi";
 
 import styles from "./styles";
-import AppButton from "components/AppButton";
-import LoadingError from "./LoadingError";
-import AppActivityIndicator from "components/AppActivityIndicator";
-import { useLoadListings } from "hooks/useLoadListings";
 
 type Item = {
   item: Listing;
 };
 
 const ListingsScreen = () => {
-  const [listings, error, isLoading, loadListings]: any = useLoadListings();
+  const {
+    data: listings,
+    error,
+    isLoading,
+    request: loadListings,
+  }: useApiProps = useApi(listingsApi.getListings);
 
   const { navigate } = useNavigation<FeedNavigationGenericProp<"Listings">>();
 

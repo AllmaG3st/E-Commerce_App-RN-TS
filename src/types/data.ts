@@ -4,6 +4,7 @@ import { ImageSourcePropType } from "react-native";
 import { RouteProp } from "@react-navigation/native";
 import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
 
+//!Common
 export type MaterialCommunityIconsType = React.ComponentProps<
   typeof MaterialCommunityIcons
 >["name"];
@@ -30,6 +31,13 @@ export interface Category {
   label: string;
   value: number;
 }
+
+export type useApiProps = {
+  data: any[];
+  error: boolean;
+  isLoading: boolean;
+  request: () => Promise<any>;
+};
 
 //!Listings
 

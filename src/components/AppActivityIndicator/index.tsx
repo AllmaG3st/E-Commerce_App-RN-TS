@@ -7,7 +7,7 @@ type Props = {
   visible: boolean;
 };
 
-const AppActivityIndicator: React.FC<Props> = ({ visible }) => {
+const AppActivityIndicator: React.FC<Props> = ({ visible = false }) => {
   if (!visible) return null;
 
   return <LottieView loop autoPlay source={loading} />;
