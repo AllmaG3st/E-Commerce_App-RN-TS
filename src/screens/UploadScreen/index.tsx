@@ -28,6 +28,7 @@ const UploadScreen: React.FC<Props> = ({
           <LottieView
             autoPlay
             duration={400}
+            loop={false}
             onAnimationFinish={onDone}
             source={done}
             style={styles.animation}

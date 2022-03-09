@@ -33,7 +33,7 @@ const ListingEditScreen: React.FC<Props> = () => {
 
   const handleOnDone = () => setUploadVisible(false);
 
-  const handleSubmit = async (listing: any) => {
+  const handleSubmit = async (listing: any, { resetForm }: any) => {
     setProgress(0);
     setUploadVisible(true);
     const result = await listingsApi.addListing(
@@ -50,6 +50,9 @@ const ListingEditScreen: React.FC<Props> = () => {
       setUploadVisible(false);
       return alert("Could not save the listing");
     }
+
+    resetForm();
+    setImages([]);
   };
 
   const { t } = useTranslation();
