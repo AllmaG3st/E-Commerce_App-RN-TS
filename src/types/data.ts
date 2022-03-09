@@ -46,11 +46,32 @@ type ListingImage = {
   thumbnailUrl?: string;
 };
 
-export interface Listing {
+type ListingRequestCategory = {
+  backgroundColor: string;
+  icon: string;
+  label: string;
+  value: 5;
+};
+
+type Location = {
+  latitude: number;
+  longitude: number;
+};
+
+export interface ListingRequest {
+  category: ListingRequestCategory;
+  description: string;
+  images: string[];
+  location: Location;
+  price: string;
+  title: string;
+}
+
+export interface ListingResponse {
   categoryId: 1;
   id: number;
   images: ListingImage[];
-  location: object;
+  location: Location;
   price: number;
   title: string;
   userId: number;
@@ -77,7 +98,7 @@ export type AuthRouteGenericProp<
 export type FeedNavigatorParamList = {
   Listings: undefined;
   ListingDetails: {
-    item: Listing;
+    item: ListingResponse;
   };
 };
 
