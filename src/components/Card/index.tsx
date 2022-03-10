@@ -1,10 +1,6 @@
-import {
-  View,
-  Image,
-  ImageSourcePropType,
-  TouchableWithoutFeedback,
-} from "react-native";
+import { View, TouchableWithoutFeedback } from "react-native";
 import React, { memo } from "react";
+import { Image } from "react-native-expo-image-cache";
 
 import AppText from "../AppText";
 
@@ -15,6 +11,7 @@ type Props = {
   subTitle: string;
   imageUrl: string;
   onPress?: (item: any) => void;
+  thumbnailUrl: string;
 };
 
 const Card: React.FC<Props> = ({
@@ -22,11 +19,17 @@ const Card: React.FC<Props> = ({
   subTitle = "",
   imageUrl,
   onPress = () => {},
+  thumbnailUrl = "",
 }) => {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.card}>
-        <Image style={styles.image} source={{ uri: imageUrl }} />
+        <Image
+          style={styles.image}
+          tint="light"
+          uri={imageUrl}
+          preview={{ uri: thumbnailUrl }}
+        />
         <View style={styles.detailsContainer}>
           <AppText style={styles.title} numberOfLines={1}>
             {title}

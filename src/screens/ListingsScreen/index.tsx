@@ -38,6 +38,7 @@ const ListingsScreen = () => {
         subTitle={`$ ${item.price}`}
         onPress={() => navigate("ListingDetails", { item })}
         title={item.title}
+        thumbnailUrl={item.images[0].thumbnailUrl || ""}
       />
     );
   }, []);
