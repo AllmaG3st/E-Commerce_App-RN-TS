@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
 
 import Screen from "components/Screen";
+import UploadScreen from "screens/UploadScreen";
 import { AppFormField, AppFormPicker, SubmitButton } from "components/forms";
 import CategoryPickerItem from "components/CategoryPickerItem";
 import FormImagePicker from "components/forms/FormImagePicker";
@@ -13,7 +14,7 @@ import { useLocation } from "hooks/useLocation";
 import listingsApi from "api/listings";
 
 import styles from "./styles";
-import UploadScreen from "screens/UploadScreen";
+import { TextInput } from "react-native";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
@@ -70,7 +71,7 @@ const ListingEditScreen: React.FC<Props> = () => {
           price: "",
           description: "",
           category: null,
-          images: [],
+          images,
         }}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
