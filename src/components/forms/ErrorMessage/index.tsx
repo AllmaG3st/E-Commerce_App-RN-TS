@@ -6,7 +6,7 @@ import AppText from "components/AppText";
 import globalStyles from "config/globalStyles";
 
 type Props = {
-  error?: string;
+  error?: string | null;
   visible: undefined | boolean;
   style?: TextStyle;
 };

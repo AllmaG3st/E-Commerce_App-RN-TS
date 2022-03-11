@@ -15,9 +15,9 @@ export default function App() {
   if (fontsLoading) return <LottieView autoPlay loop source={loading} />;
 
   return (
-    <Screen>
+    <>
       <OfflineNotice />
       <Navigation />
-    </Screen>
+    </>
   );
 }

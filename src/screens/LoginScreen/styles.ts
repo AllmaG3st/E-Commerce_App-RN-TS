@@ -6,6 +6,10 @@ export default StyleSheet.create({
   container: {
     padding: 10,
   },
+  errorMessage: {
+    textAlign: "center",
+    fontSize: 18,
+  },
   logo: {
     alignSelf: "center",
     width: width / 4,

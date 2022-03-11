@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { LoginScreen, RegisterScreen, WelcomeScreen } from "screens";
 
 import { AuthNavigatorParamList } from "types/data";
-import { ROUTES } from "navigation/config/routes";
+import { ROUTES } from "../config/routes";
 
 const Stack = createNativeStackNavigator<AuthNavigatorParamList>();
 

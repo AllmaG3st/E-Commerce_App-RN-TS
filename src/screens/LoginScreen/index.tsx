@@ -1,16 +1,23 @@
 import { Image } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import jwtDecode from "jwt-decode";
 
 import Screen from "components/Screen";
-import { AppFormField, SubmitButton } from "components/forms";
+import { AppFormField, SubmitButton, ErrorMessage } from "components/forms";
 
+import authApi from "api/auth";
 //@ts-ignore
 import mainLogo from "assets/logo-red.png";
 
 import styles from "./styles";
+
+type loginInfoType = {
+  email: string;
+  password: string;
+};
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -18,7 +25,25 @@ const validationSchema = Yup.object().shape({
 });
 
 const LoginScreen = () => {
+  const [loginErrorVisible, setLoginErrorVisible] = useState<boolean>(false);
+
   const { t } = useTranslation();
+
+  const handleSubmit = async (
+    { email, password }: loginInfoType,
+    { resetForm }: any
+  ) => {
+    const response = await authApi.login(email, password);
+
+    if (!response.ok) {
+      setLoginErrorVisible(true);
+      return;
+    }
+
+    resetForm();
+    setLoginErrorVisible(false);
+    console.log(response.data);
+  };
 
   return (
     <Screen style={styles.container}>
@@ -26,11 +51,16 @@ const LoginScreen = () => {
 
       <Formik
         initialValues={{ email: "", password: "" }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
         {({ values, errors, touched }) => (
           <>
+            <ErrorMessage
+              visible={loginErrorVisible}
+              error="Invalid email and/or password"
+              style={styles.errorMessage}
+            />
             <AppFormField
               autoCapitalize="none"
               autoCorrect={false}

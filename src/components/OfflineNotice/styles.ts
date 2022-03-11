@@ -1,4 +1,5 @@
-import { StyleSheet, StatusBar } from "react-native";
+import { StyleSheet } from "react-native";
+import Constants from "expo-constants";
 
 import { COLORS } from "config/colors";
 
@@ -8,6 +9,7 @@ export default StyleSheet.create({
     backgroundColor: COLORS.primary,
     justifyContent: "center",
     height: 50,
+    marginTop: Constants.statusBarHeight,
     position: "absolute",
     width: "100%",
     zIndex: 1,
