@@ -13,7 +13,6 @@ export default function App() {
   const [user, setUser] = useState({});
 
   const fontsLoading = useLoadFonts();
-  console.log(user);
 
   if (fontsLoading) return <LottieView autoPlay loop source={loading} />;
 

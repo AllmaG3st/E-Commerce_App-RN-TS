@@ -1,5 +1,5 @@
 import { View, FlatList } from "react-native";
-import React, { useCallback } from "react";
+import React, { useCallback, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigation } from "@react-navigation/native";
 
@@ -8,7 +8,10 @@ import ListItem from "components/ListItem";
 import Icon from "components/Icon";
 import ListItemSeparator from "components/ListItemSeparator";
 
+//@ts-ignore
+import avatar from "assets/margot.jpg";
 import { AccountNavigationGenericProp, MenuItem } from "types/data";
+import AuthContext from "../../auth/context";
 
 import { COLORS } from "config/colors";
 
@@ -33,6 +36,8 @@ const menuItems: MenuItem[] = [
 ];
 
 const AccountScreen = () => {
+  const { user }: any = useContext(AuthContext);
+
   const { t } = useTranslation();
 
   const { navigate } = useNavigation<AccountNavigationGenericProp<"Account">>();
@@ -56,11 +61,7 @@ const AccountScreen = () => {
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
-        <ListItem
-          title="Margot Robbie"
-          subTitle="harleyqueen@gmail.com"
-          image={require("../../assets/margot.jpg")}
-        />
+        <ListItem title={user.name} subTitle={user.email} image={avatar} />
       </View>
       <View style={styles.container}>
         <FlatList

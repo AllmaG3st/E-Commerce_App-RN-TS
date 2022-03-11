@@ -39,6 +39,22 @@ export type useApiProps = {
   request: () => Promise<any>;
 };
 
+//!Contexts
+
+export type userAuthTokenType = {
+  email: string;
+  iat: number;
+  name: string;
+  userId: number;
+};
+
+export type authContextType =
+  | {
+      user: userAuthTokenType | {};
+      setUser: (user: userAuthTokenType) => void;
+    }
+  | {};
+
 //!Listings
 
 type ListingImage = {

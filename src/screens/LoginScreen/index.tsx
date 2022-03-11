@@ -26,7 +26,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const LoginScreen = () => {
-  const authContext: any = useContext(AuthContext);
+  const { setUser }: any = useContext(AuthContext);
   const [loginErrorVisible, setLoginErrorVisible] = useState<boolean>(false);
 
   const { t } = useTranslation();
@@ -40,7 +40,7 @@ const LoginScreen = () => {
     if (!response.ok) return setLoginErrorVisible(true);
 
     const user = jwtDecode(response.data);
-    authContext.setUser(user);
+    setUser(user);
 
     resetForm();
     setLoginErrorVisible(false);
