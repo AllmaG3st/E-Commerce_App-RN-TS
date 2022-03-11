@@ -14,7 +14,6 @@ import { useLocation } from "hooks/useLocation";
 import listingsApi from "api/listings";
 
 import styles from "./styles";
-import { TextInput } from "react-native";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),

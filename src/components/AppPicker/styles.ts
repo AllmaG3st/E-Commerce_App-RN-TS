@@ -18,3 +18,4 @@ export default (error?: string, visible?: boolean) =>
       textAlign: "center",
     },
   });
+  
