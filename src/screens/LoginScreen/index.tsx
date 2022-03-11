@@ -1,5 +1,5 @@
 import { Image } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -7,6 +7,7 @@ import jwtDecode from "jwt-decode";
 
 import Screen from "components/Screen";
 import { AppFormField, SubmitButton, ErrorMessage } from "components/forms";
+import AuthContext from "../../auth/context";
 
 import authApi from "api/auth";
 //@ts-ignore
@@ -25,6 +26,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const LoginScreen = () => {
+  const authContext: any = useContext(AuthContext);
   const [loginErrorVisible, setLoginErrorVisible] = useState<boolean>(false);
 
   const { t } = useTranslation();
@@ -33,16 +35,15 @@ const LoginScreen = () => {
     { email, password }: loginInfoType,
     { resetForm }: any
   ) => {
-    const response = await authApi.login(email, password);
+    const response: any = await authApi.login(email, password);
 
-    if (!response.ok) {
-      setLoginErrorVisible(true);
-      return;
-    }
+    if (!response.ok) return setLoginErrorVisible(true);
+
+    const user = jwtDecode(response.data);
+    authContext.setUser(user);
 
     resetForm();
     setLoginErrorVisible(false);
-    console.log(response.data);
   };
 
   return (
