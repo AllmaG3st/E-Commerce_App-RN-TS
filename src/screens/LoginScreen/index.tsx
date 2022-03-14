@@ -1,5 +1,5 @@
 import { Image } from "react-native";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -11,10 +11,9 @@ import { AppFormField, SubmitButton, ErrorMessage } from "components/forms";
 //@ts-ignore
 import mainLogo from "assets/logo-red.png";
 import authApi from "api/auth";
-import authStorage from "auth/storage";
-import AuthContext from "auth/context";
 
 import styles from "./styles";
+import { useAuth } from "hooks/useAuth";
 
 type LoginInfoType = {
   email: string;
@@ -27,9 +26,9 @@ const validationSchema = Yup.object().shape({
 });
 
 const LoginScreen = () => {
-  const { setUser }: any = useContext(AuthContext);
   const [loginErrorVisible, setLoginErrorVisible] = useState<boolean>(false);
 
+  const { login } = useAuth();
   const { t } = useTranslation();
 
   const handleSubmit = async ({ email, password }: LoginInfoType) => {
@@ -38,10 +37,8 @@ const LoginScreen = () => {
     if (!response.ok) return setLoginErrorVisible(true);
 
     setLoginErrorVisible(false);
-    const user = jwtDecode(response.data);
-    setUser(user);
 
-    authStorage.storeToken(response.data);
+    login(response.data);
   };
 
   return (

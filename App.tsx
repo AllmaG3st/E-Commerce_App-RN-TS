@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import LottieView from "lottie-react-native";
+import AppLoading from "expo-app-loading";
 
 import OfflineNotice from "components/OfflineNotice";
 import AuthContext from "./src/auth/context";
@@ -9,24 +10,27 @@ import authStorage from "auth/storage";
 import loading from "assets/animations/loading.json";
 import { useLoadFonts } from "hooks/useLoadFonts";
 import "./i18n.config";
-import jwtDecode from "jwt-decode";
 
 export default function App() {
-  const [user, setUser] = useState({});
-
-  useEffect(() => {
-    const restoreToken = async () => {
-      const token = await authStorage.getToken();
-
-      if (!token) return;
-
-      setUser(jwtDecode(token));
-    };
-
-    restoreToken();
-  }, []);
+  const [user, setUser] = useState(null);
+  const [isReady, setIsReady] = useState(false);
 
   const fontsLoading = useLoadFonts();
+
+  const restoreToken = useCallback(async () => {
+    const user: any = await authStorage.getUser();
+
+    if (user) setUser(user);
+  }, []);
+
+  if (!isReady)
+    return (
+      <AppLoading
+        startAsync={restoreToken}
+        onFinish={() => setIsReady(true)}
+        onError={() => console.log("Error during getting token")}
+      />
+    );
 
   if (fontsLoading) return <LottieView autoPlay loop source={loading} />;
 

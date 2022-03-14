@@ -1,5 +1,5 @@
 import { View, FlatList } from "react-native";
-import React, { useCallback, useContext } from "react";
+import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigation } from "@react-navigation/native";
 
@@ -7,15 +7,13 @@ import Screen from "components/Screen";
 import ListItem from "components/ListItem";
 import Icon from "components/Icon";
 import ListItemSeparator from "components/ListItemSeparator";
-import AuthContext from "../../auth/context";
 
 //@ts-ignore
 import avatar from "assets/margot.jpg";
-import authStorage from "auth/storage";
+import { useAuth } from "hooks/useAuth";
 import { AccountNavigationGenericProp, MenuItem } from "types/data";
 
 import { COLORS } from "config/colors";
-
 import styles from "./styles";
 
 const menuItems: MenuItem[] = [
@@ -37,16 +35,11 @@ const menuItems: MenuItem[] = [
 ];
 
 const AccountScreen = () => {
-  const { user, setUser }: any = useContext(AuthContext);
+  const { user, logout } = useAuth();
 
   const { t } = useTranslation();
 
   const { navigate } = useNavigation<AccountNavigationGenericProp<"Account">>();
-
-  const handleLogout = () => {
-    setUser({});
-    authStorage.removeToken();
-  };
 
   const renderListItem = useCallback(({ item }) => {
     return (
@@ -83,7 +76,7 @@ const AccountScreen = () => {
           IconComponent={
             <Icon name="logout" size={50} bgColor={COLORS.yellow} />
           }
-          onPress={handleLogout}
+          onPress={logout}
         />
       </View>
     </Screen>

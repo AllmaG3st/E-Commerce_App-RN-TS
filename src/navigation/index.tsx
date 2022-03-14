@@ -1,20 +1,20 @@
-import React, { useContext } from "react";
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 
 import AppNavigator from "./navigators/AppNavigator";
 
 import AuthNavigator from "./navigators/AuthNavigator";
 import AuthContext from "../auth/context";
-import { authContextType } from "types/data";
+import { useAuth } from "hooks/useAuth";
 
 import navigationTheme from "./config/navigationTheme";
 
 export default function Navigation() {
-  const { user }: any = useContext(AuthContext);
+  const { user }: any = useAuth();
 
   return (
     <NavigationContainer theme={navigationTheme}>
-      {user.name ? <AppNavigator /> : <AuthNavigator />}
+      {user ? <AppNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   );
 }
