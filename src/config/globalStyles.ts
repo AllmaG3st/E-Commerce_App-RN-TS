@@ -4,7 +4,7 @@ import { COLORS } from "./colors";
 
 export default StyleSheet.create({
   error: {
-    fontSize: 15,
+    fontSize: 18,
     color: COLORS.danger,
   },
   fieldError: {

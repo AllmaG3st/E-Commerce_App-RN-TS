@@ -1,13 +1,18 @@
 import { Image } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
 import Screen from "components/Screen";
-import { AppFormField, SubmitButton } from "components/forms";
+import { AppFormField, ErrorMessage, SubmitButton } from "components/forms";
+
+import { useAuth } from "hooks/useAuth";
+import usersApi from "api/users";
+import authApi from "api/auth";
 
 import styles from "./styles";
+import globalStyles from "config/globalStyles";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label("Name"),
@@ -16,17 +21,46 @@ const validationSchema = Yup.object().shape({
 });
 
 const RegisterScreen = () => {
+  const [error, setError] = useState<string | null>(null);
+  const { login } = useAuth();
+
   const { t } = useTranslation();
+
+  const handleSubmit = async (userInfo: any) => {
+    const result: any = await usersApi.register(userInfo);
+
+    console.log(error);
+
+    if (!result.ok) {
+      if (result.data) setError(result.data.error);
+      else {
+        setError("An unexpected error occurred");
+      }
+      return;
+    }
+
+    const { data: authToken } = await authApi.login(
+      userInfo.email,
+      userInfo.password
+    );
+
+    login(authToken);
+  };
 
   return (
     <Screen style={styles.container}>
       <Formik
         initialValues={{ name: "", email: "", password: "" }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
         {({ values, errors, touched }) => (
           <>
+            <ErrorMessage
+              visible={!!error}
+              error={error}
+              style={globalStyles.error}
+            />
             <AppFormField
               autoCorrect={false}
               error={errors.name}

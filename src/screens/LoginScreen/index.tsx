@@ -11,9 +11,10 @@ import { AppFormField, SubmitButton, ErrorMessage } from "components/forms";
 //@ts-ignore
 import mainLogo from "assets/logo-red.png";
 import authApi from "api/auth";
+import { useAuth } from "hooks/useAuth";
 
 import styles from "./styles";
-import { useAuth } from "hooks/useAuth";
+import globalStyles from "config/globalStyles";
 
 type LoginInfoType = {
   email: string;
@@ -26,7 +27,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const LoginScreen = () => {
-  const [loginErrorVisible, setLoginErrorVisible] = useState<boolean>(false);
+  const [errorVisible, setErrorVisible] = useState<boolean>(false);
 
   const { login } = useAuth();
   const { t } = useTranslation();
@@ -34,9 +35,9 @@ const LoginScreen = () => {
   const handleSubmit = async ({ email, password }: LoginInfoType) => {
     const response: any = await authApi.login(email, password);
 
-    if (!response.ok) return setLoginErrorVisible(true);
+    if (!response.ok) return setErrorVisible(true);
 
-    setLoginErrorVisible(false);
+    setErrorVisible(false);
 
     login(response.data);
   };
@@ -53,9 +54,9 @@ const LoginScreen = () => {
         {({ values, errors, touched }) => (
           <>
             <ErrorMessage
-              visible={loginErrorVisible}
+              visible={errorVisible}
               error="Invalid email and/or password"
-              style={styles.errorMessage}
+              style={globalStyles.error}
             />
             <AppFormField
               autoCapitalize="none"

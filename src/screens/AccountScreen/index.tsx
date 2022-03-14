@@ -23,6 +23,7 @@ const menuItems: MenuItem[] = [
       name: "format-list-bulleted",
       backgroundColor: COLORS.primary,
     },
+    targetScreen: "Listings",
   },
   {
     title: "My Messages",
