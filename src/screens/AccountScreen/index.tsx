@@ -11,6 +11,7 @@ import AuthContext from "../../auth/context";
 
 //@ts-ignore
 import avatar from "assets/margot.jpg";
+import authStorage from "auth/storage";
 import { AccountNavigationGenericProp, MenuItem } from "types/data";
 
 import { COLORS } from "config/colors";
@@ -44,6 +45,7 @@ const AccountScreen = () => {
 
   const handleLogout = () => {
     setUser({});
+    authStorage.removeToken();
   };
 
   const renderListItem = useCallback(({ item }) => {

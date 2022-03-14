@@ -7,15 +7,16 @@ import jwtDecode from "jwt-decode";
 
 import Screen from "components/Screen";
 import { AppFormField, SubmitButton, ErrorMessage } from "components/forms";
-import AuthContext from "../../auth/context";
 
-import authApi from "api/auth";
 //@ts-ignore
 import mainLogo from "assets/logo-red.png";
+import authApi from "api/auth";
+import authStorage from "auth/storage";
+import AuthContext from "auth/context";
 
 import styles from "./styles";
 
-type loginInfoType = {
+type LoginInfoType = {
   email: string;
   password: string;
 };
@@ -31,19 +32,16 @@ const LoginScreen = () => {
 
   const { t } = useTranslation();
 
-  const handleSubmit = async (
-    { email, password }: loginInfoType,
-    { resetForm }: any
-  ) => {
+  const handleSubmit = async ({ email, password }: LoginInfoType) => {
     const response: any = await authApi.login(email, password);
 
     if (!response.ok) return setLoginErrorVisible(true);
 
+    setLoginErrorVisible(false);
     const user = jwtDecode(response.data);
     setUser(user);
 
-    resetForm();
-    setLoginErrorVisible(false);
+    authStorage.storeToken(response.data);
   };
 
   return (
