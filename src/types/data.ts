@@ -48,12 +48,10 @@ export type userAuthTokenType = {
   userId: number;
 };
 
-export type authContextType =
-  | {
-      user: userAuthTokenType | {};
-      setUser: (user: userAuthTokenType) => void;
-    }
-  | {};
+export type authContextType = {
+  user: userAuthTokenType | {};
+  setUser: (user: userAuthTokenType) => void;
+};
 
 //!Listings
 

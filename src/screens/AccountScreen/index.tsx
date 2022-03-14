@@ -7,11 +7,11 @@ import Screen from "components/Screen";
 import ListItem from "components/ListItem";
 import Icon from "components/Icon";
 import ListItemSeparator from "components/ListItemSeparator";
+import AuthContext from "../../auth/context";
 
 //@ts-ignore
 import avatar from "assets/margot.jpg";
 import { AccountNavigationGenericProp, MenuItem } from "types/data";
-import AuthContext from "../../auth/context";
 
 import { COLORS } from "config/colors";
 
@@ -36,11 +36,15 @@ const menuItems: MenuItem[] = [
 ];
 
 const AccountScreen = () => {
-  const { user }: any = useContext(AuthContext);
+  const { user, setUser }: any = useContext(AuthContext);
 
   const { t } = useTranslation();
 
   const { navigate } = useNavigation<AccountNavigationGenericProp<"Account">>();
+
+  const handleLogout = () => {
+    setUser({});
+  };
 
   const renderListItem = useCallback(({ item }) => {
     return (
@@ -77,6 +81,7 @@ const AccountScreen = () => {
           IconComponent={
             <Icon name="logout" size={50} bgColor={COLORS.yellow} />
           }
+          onPress={handleLogout}
         />
       </View>
     </Screen>
