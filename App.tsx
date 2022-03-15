@@ -1,6 +1,7 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import LottieView from "lottie-react-native";
 import AppLoading from "expo-app-loading";
+import * as Notifications from "expo-notifications";
 
 import OfflineNotice from "components/OfflineNotice";
 import AuthContext from "./src/auth/context";

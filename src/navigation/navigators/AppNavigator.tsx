@@ -2,39 +2,25 @@ import React, { useEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useTranslation } from "react-i18next";
-import * as Notifications from "expo-notifications";
-import * as Permissions from "expo-permissions";
+import { useNavigation } from "@react-navigation/native";
 
 import { ListingEditScreen } from "screens";
 import FeedNavigator from "./FeedNavigator";
 import AccountNavigator from "./AccountNavigator";
 
-import { AppNavigatorParamList } from "types/data";
+import { AppNavigationGenericProp, AppNavigatorParamList } from "types/data";
 import NewListingButton from "../NewListingButton";
 
 import { ROUTES } from "../config/routes";
+import { useNotification } from "hooks/useNotifications";
 
 const Tab = createBottomTabNavigator<AppNavigatorParamList>();
 
 const AppNavigator = () => {
   const { t } = useTranslation();
+  const { navigate } = useNavigation<AppNavigationGenericProp<"FeedTab">>();
 
-  useEffect(() => {
-    const registerForPushNotifications = async () => {
-      try {
-        const permission = await Notifications.requestPermissionsAsync();
-
-        if (!permission.granted) return alert("Permission not granted");
-
-        const { data } = await Notifications.getExpoPushTokenAsync();
-        console.log(data);
-      } catch (error) {
-        console.log("Error getting push token", error);
-      }
-    };
-
-    registerForPushNotifications();
-  }, []);
+  useNotification(() => navigate(ROUTES.ACCOUNT_TAB));
 
   return (
     <Tab.Navigator>

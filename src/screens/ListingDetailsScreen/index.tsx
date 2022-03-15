@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { KeyboardAvoidingView, Platform, View } from "react-native";
 import { Image } from "react-native-expo-image-cache";
 import React from "react";
 import { useTranslation } from "react-i18next";
@@ -10,6 +10,7 @@ import AppText from "components/AppText";
 import ListItem from "components/ListItem";
 
 import styles from "./styles";
+import ContactSellerForm from "components/ContactSellerForm";
 
 const ListingDetailScreen = () => {
   const { t } = useTranslation();
@@ -19,7 +20,10 @@ const ListingDetailScreen = () => {
   const listing = route.params.item;
 
   return (
-    <View>
+    <KeyboardAvoidingView
+      behavior="position"
+      keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 100}
+    >
       <Image
         style={styles.image}
         uri={listing.images[0].url}
@@ -35,8 +39,9 @@ const ListingDetailScreen = () => {
             image={require("../../assets/margot.jpg")}
           />
         </View>
+        <ContactSellerForm listing={listing} />
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 

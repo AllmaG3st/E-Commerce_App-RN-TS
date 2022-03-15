@@ -142,7 +142,7 @@ export type AccountRouteGenericProp<
 export type AppNavigatorParamList = {
   FeedTab: FeedNavigatorParamList;
   AddListingTab: undefined;
-  AccountTab: AccountNavigatorParamList;
+  AccountTab: AccountNavigatorParamList | undefined;
 };
 
 export type AppNavigationGenericProp<
