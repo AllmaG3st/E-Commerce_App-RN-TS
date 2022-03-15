@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { PixelRatio, StyleSheet } from "react-native";
 
 import { COLORS } from "../../config/colors";
 
@@ -12,7 +12,7 @@ export default StyleSheet.create({
     alignItems: "center",
   },
   screen: {
-    padding: 20,
+    padding: PixelRatio.getPixelSizeForLayoutSize(5),
     paddingBottom: 0,
     backgroundColor: COLORS.light,
   },
