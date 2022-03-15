@@ -7,12 +7,14 @@ import * as Yup from "yup";
 import Screen from "components/Screen";
 import { AppFormField, ErrorMessage, SubmitButton } from "components/forms";
 
+import { useApi } from "hooks/useApi";
 import { useAuth } from "hooks/useAuth";
 import usersApi from "api/users";
 import authApi from "api/auth";
 
 import styles from "./styles";
 import globalStyles from "config/globalStyles";
+import AppActivityIndicator from "components/AppActivityIndicator";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label("Name"),
@@ -22,14 +24,14 @@ const validationSchema = Yup.object().shape({
 
 const RegisterScreen = () => {
   const [error, setError] = useState<string | null>(null);
+  const registerApi = useApi(usersApi.register);
+  const loginApi = useApi(authApi.login);
   const { login } = useAuth();
 
   const { t } = useTranslation();
 
   const handleSubmit = async (userInfo: any) => {
-    const result: any = await usersApi.register(userInfo);
-
-    console.log(error);
+    const result: any = await registerApi.request(userInfo);
 
     if (!result.ok) {
       if (result.data) setError(result.data.error);
@@ -39,7 +41,7 @@ const RegisterScreen = () => {
       return;
     }
 
-    const { data: authToken } = await authApi.login(
+    const { data: authToken }: any = await loginApi.request(
       userInfo.email,
       userInfo.password
     );
@@ -49,6 +51,9 @@ const RegisterScreen = () => {
 
   return (
     <Screen style={styles.container}>
+      <AppActivityIndicator
+        visible={registerApi.isLoading || loginApi.isLoading}
+      />
       <Formik
         initialValues={{ name: "", email: "", password: "" }}
         onSubmit={handleSubmit}

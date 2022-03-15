@@ -7,13 +7,13 @@ export const useApi = (apiFunc: (...args: any) => Promise<any>) => {
 
   const request = useCallback(async (...args) => {
     setIsLoading(true);
-    const { ok, data }: any = await apiFunc(...args);
+    const response: any = await apiFunc(...args);
     setIsLoading(false);
 
-    if (!ok) return setError(true);
+    setError(!response.ok);
+    setData(response.data);
 
-    setError(false);
-    setData(data);
+    return response;
   }, []);
 
   useEffect(() => {
