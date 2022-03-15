@@ -48,16 +48,18 @@ const ListingsScreen = () => {
   };
 
   return (
-    <Screen style={styles.screen}>
-      {error && <LoadingError loadListings={loadListings} />}
+    <>
       <AppActivityIndicator visible={isLoading} />
-      <FlatList
-        showsVerticalScrollIndicator={false}
-        data={listings}
-        keyExtractor={keyExtractor}
-        renderItem={renderListingItem}
-      />
-    </Screen>
+      <Screen style={styles.screen}>
+        {error && <LoadingError loadListings={loadListings} />}
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={listings}
+          keyExtractor={keyExtractor}
+          renderItem={renderListingItem}
+        />
+      </Screen>
+    </>
   );
 };
 

@@ -50,58 +50,60 @@ const RegisterScreen = () => {
   };
 
   return (
-    <Screen style={styles.container}>
+    <>
       <AppActivityIndicator
         visible={registerApi.isLoading || loginApi.isLoading}
       />
-      <Formik
-        initialValues={{ name: "", email: "", password: "" }}
-        onSubmit={handleSubmit}
-        validationSchema={validationSchema}
-      >
-        {({ values, errors, touched }) => (
-          <>
-            <ErrorMessage
-              visible={!!error}
-              error={error}
-              style={globalStyles.error}
-            />
-            <AppFormField
-              autoCorrect={false}
-              error={errors.name}
-              fieldName="name"
-              iconName="account"
-              placeHolder={t("registerScreen.name")}
-              value={values.name}
-              visible={touched.name}
-            />
-            <AppFormField
-              autoCapitalize="none"
-              autoCorrect={false}
-              error={errors.email}
-              fieldName="email"
-              iconName="email"
-              placeHolder={t("registerScreen.email")}
-              textContentType="emailAddress"
-              value={values.email}
-              visible={touched.email}
-            />
-            <AppFormField
-              autoCapitalize="none"
-              autoCorrect={false}
-              error={errors.password}
-              fieldName="password"
-              iconName="lock"
-              placeHolder={t("registerScreen.password")}
-              secureTextEntry
-              value={values.password}
-              visible={touched.password}
-            />
-            <SubmitButton title={t("registerScreen.register")} />
-          </>
-        )}
-      </Formik>
-    </Screen>
+      <Screen style={styles.container}>
+        <Formik
+          initialValues={{ name: "", email: "", password: "" }}
+          onSubmit={handleSubmit}
+          validationSchema={validationSchema}
+        >
+          {({ values, errors, touched }) => (
+            <>
+              <ErrorMessage
+                visible={!!error}
+                error={error}
+                style={globalStyles.error}
+              />
+              <AppFormField
+                autoCorrect={false}
+                error={errors.name}
+                fieldName="name"
+                iconName="account"
+                placeHolder={t("registerScreen.name")}
+                value={values.name}
+                visible={touched.name}
+              />
+              <AppFormField
+                autoCapitalize="none"
+                autoCorrect={false}
+                error={errors.email}
+                fieldName="email"
+                iconName="email"
+                placeHolder={t("registerScreen.email")}
+                textContentType="emailAddress"
+                value={values.email}
+                visible={touched.email}
+              />
+              <AppFormField
+                autoCapitalize="none"
+                autoCorrect={false}
+                error={errors.password}
+                fieldName="password"
+                iconName="lock"
+                placeHolder={t("registerScreen.password")}
+                secureTextEntry
+                value={values.password}
+                visible={touched.password}
+              />
+              <SubmitButton title={t("registerScreen.register")} />
+            </>
+          )}
+        </Formik>
+      </Screen>
+    </>
   );
 };
 
