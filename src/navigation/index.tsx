@@ -4,7 +4,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import AppNavigator from "./navigators/AppNavigator";
 
 import AuthNavigator from "./navigators/AuthNavigator";
-import AuthContext from "../auth/context";
 import { useAuth } from "hooks/useAuth";
 
 import navigationTheme from "./config/navigationTheme";

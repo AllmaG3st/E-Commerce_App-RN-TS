@@ -6,6 +6,8 @@ import { useRoute } from "@react-navigation/native";
 
 import { FeedRouteGenericProp } from "types/data";
 
+//@ts-ignore
+import avatar from "assets/margot.jpg";
 import AppText from "components/AppText";
 import ListItem from "components/ListItem";
 
@@ -36,7 +38,7 @@ const ListingDetailScreen = () => {
           <ListItem
             title="Margot Robbie"
             subTitle={`5 ${t("Listings")}`}
-            image={require("../../assets/margot.jpg")}
+            image={avatar}
           />
         </View>
         <ContactSellerForm listing={listing} />
